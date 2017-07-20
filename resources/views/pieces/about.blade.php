@@ -1,6 +1,6 @@
 <div class="card mb-4">
     <div class="card-block">
-        <h6 class="mb-3">
+        <h6 class="card-title">
             About
             <small>· <a href="#">Edit</a></small>
         </h6>

@@ -35,9 +35,7 @@
                     </div>
                 </div>
 
-                <div class="card mb-4">
-                    @include('pieces.about')
-                </div>
+                @include('pieces.about')
             </div>
 
             <div class="col-lg-6">

@@ -20,7 +20,7 @@
 </head>
 <body class="application">
 
-<nav class="navbar navbar-toggleable-sm fixed-top navbar-inverse bg-danger">
+<nav class="navbar navbar-toggleable-sm fixed-top navbar-guest">
     <div class="container">
         <button
                 class="navbar-toggler navbar-toggler-right hidden-md-up"
@@ -33,49 +33,20 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand hidden-md-up" href="{{ route('home') }}">Laratweet</a>
+        <a class="navbar-brand" href="{{ route('login') }}">Laratweet</a>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav mr-auto">
+            {{--<ul class="navbar-nav mr-auto">--}}
+            <ul class="navbar-nav ml-auto">
                 <li class="active">
-                    <a class="nav-link" href="{{ route('home') }}">
-                        <span class="icon icon-home"></span> Home
+                    <a class="nav-link" href="{{ route('login') }}">
+                        <span class="icon icon-login"></span> Login
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('profile') }}">
-                        <span class="icon icon-user"></span> Profile
+                    <a class="nav-link" href="{{ route('register') }}">
+                        <span class="icon icon-plus"></span> Register
                     </a>
-                </li>
-                <li class="dropdown-divider"></li>
-                <li class="hidden-md-up">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        <span class="icon icon-log-out"></span> Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-            </ul>
-
-            <form class="form-inline float-right hidden-sm-down">
-                <input class="form-control form-search" type="text" placeholder="Search">
-            </form>
-
-            <ul class="nav navbar-nav hidden-sm-down">
-                <li class="nav-item nav-account dropdown">
-                    <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                       aria-expanded="false">
-                        <img class="rounded-circle" src="{{ asset('images/no-thumb.png') }}">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            <span class="icon icon-log-out"></span> Logout
-                        </a>
-                    </div>
                 </li>
             </ul>
         </div>
@@ -96,62 +67,3 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
-
-{{--<nav class="navbar navbar-default navbar-fixed-top">--}}
-{{--<div class="container">--}}
-{{--<div class="navbar-header">--}}
-
-{{--<!-- Collapsed Hamburger -->--}}
-{{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"--}}
-{{--data-target="#app-navbar-collapse">--}}
-{{--<span class="sr-only">Toggle Navigation</span>--}}
-{{--<span class="icon-bar"></span>--}}
-{{--<span class="icon-bar"></span>--}}
-{{--<span class="icon-bar"></span>--}}
-{{--</button>--}}
-
-{{--<!-- Branding Image -->--}}
-{{--<a class="navbar-brand" href="{{ url('/') }}">--}}
-{{--{{ config('app.name', 'Laravel') }}--}}
-{{--</a>--}}
-{{--</div>--}}
-
-{{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-{{--<!-- Left Side Of Navbar -->--}}
-{{--<ul class="nav navbar-nav">--}}
-{{--&nbsp;--}}
-{{--</ul>--}}
-
-{{--<!-- Right Side Of Navbar -->--}}
-{{--<ul class="nav navbar-nav navbar-right">--}}
-{{--<!-- Authentication Links -->--}}
-{{--@if (Auth::guest())--}}
-{{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-{{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-{{--@else--}}
-{{--<li class="dropdown">--}}
-{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-{{--{{ Auth::user()->name }} <span class="caret"></span>--}}
-{{--</a>--}}
-
-{{--<ul class="dropdown-menu" role="menu">--}}
-{{--<li>--}}
-{{--<a href="{{ route('logout') }}"--}}
-{{--onclick="event.preventDefault();--}}
-{{--document.getElementById('logout-form').submit();">--}}
-{{--Logout--}}
-{{--</a>--}}
-
-{{--<form id="logout-form" action="{{ route('logout') }}" method="POST"--}}
-{{--style="display: none;">--}}
-{{--{{ csrf_field() }}--}}
-{{--</form>--}}
-{{--</li>--}}
-{{--</ul>--}}
-{{--</li>--}}
-{{--@endif--}}
-{{--</ul>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</nav>--}}
-

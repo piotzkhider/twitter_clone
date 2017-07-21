@@ -11,9 +11,10 @@
                             <img class="card-profile-img" src="{{ asset('images/no-thumb.png') }}">
                         </a>
 
-                        <strong class="card-title d-block">
-                            <a class="text-inherit" href="#">Dave Gamache</a>
-                        </strong>
+                        <div class="card-title my-2">
+                            <a class="font-weight-bold text-inherit d-block" href="#">Dave Gamache</a>
+                            &#64;dave_gamche
+                        </div>
 
                         <p class="mb-4">I wish i was a little bit taller, wish i was a baller, wish i had a girl…
                             also.</p>

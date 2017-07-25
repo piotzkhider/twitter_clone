@@ -40,7 +40,23 @@
             </div>
 
             <div class="col-lg-6">
-                @include('pieces.timeline')
+                <ul class="list-group media-list media-list-stream mb-4">
+                    <li class="media list-group-item p-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Message">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-secondary">
+                                    <span class="icon icon-camera"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                    @for($i = 0; $i < 5; $i++)
+                        <li class="media list-group-item p-4">
+                            @include('pieces.tweet')
+                        </li>
+                    @endfor
+                </ul>
             </div>
 
             <div class="col-lg-3">

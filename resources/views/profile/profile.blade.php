@@ -12,7 +12,13 @@
             </div>
 
             <div class="col-lg-6">
-                @include('pieces.timeline')
+                <ul class="list-group media-list media-list-stream mb-4">
+                    @for($i = 0; $i < 5; $i++)
+                        <li class="media list-group-item p-4">
+                            @include('pieces.tweet')
+                        </li>
+                    @endfor
+                </ul>
             </div>
 
             <div class="col-lg-3">

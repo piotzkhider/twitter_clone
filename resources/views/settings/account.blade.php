@@ -12,7 +12,7 @@
                 <div class="media-body">
                     <form>
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-4 col-form-label">Name</label>
+                            <label for="example-text-input" class="col-4 col-form-label">名前</label>
                             <div class="col-8">
                                 <input class="form-control" type="text" value="artisanal_kale">
                             </div>
@@ -24,14 +24,14 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="example-password-input" class="col-4 col-form-label">Password</label>
+                            <label for="example-password-input" class="col-4 col-form-label">パスワード</label>
                             <div class="col-8">
                                 <input class="form-control" type="password">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-password-input" class="col-4 col-form-label">Confirm
-                                Password</label>
+                                パスワード</label>
                             <div class="col-8">
                                 <input class="form-control" type="password">
                             </div>

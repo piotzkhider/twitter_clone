@@ -45,7 +45,7 @@
                 </li>
                 <li>
                     <a class="nav-link" href="{{ route('register') }}">
-                        <span class="icon icon-plus"></span> Register
+                        <span class="icon icon-plus"></span> 登録
                     </a>
                 </li>
             </ul>

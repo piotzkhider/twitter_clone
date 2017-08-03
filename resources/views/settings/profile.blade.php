@@ -12,7 +12,7 @@
                 <div class="media-body">
                     <form>
                         <div class="form-group row">
-                            <label class="col-2 col-form-label">Name</label>
+                            <label class="col-2 col-form-label">名前</label>
                             <div class="col-10">
                                 <input class="form-control" type="text" value="Artisanal Kale">
                             </div>

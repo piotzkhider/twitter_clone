@@ -6,7 +6,7 @@
             <div class="offset-lg-2 col-lg-8">
                 <section class="card mb-4">
                     <div class="card-header" style="background-color: white">
-                        <h1>Register</h1>
+                        <h1>登録</h1>
                     </div>
 
                     <div class="card-block">
@@ -14,7 +14,7 @@
                             {{ csrf_field() }}
 
                             <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-4 col-form-label text-right">Name</label>
+                                <label for="name" class="col-4 col-form-label text-right">名前</label>
                                 <div class="col-6">
                                     <input name="name" id="name" type="text" class="form-control"
                                            value="{{ old('name') }}" required autofocus>
@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-4 col-form-label text-right">E-Mail Address</label>
+                                <label for="email" class="col-4 col-form-label text-right">メールアドレス</label>
                                 <div class="col-6">
                                     <input name="email" id="email" type="email" class="form-control"
                                            value="{{ old('email') }}" required autofocus>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-4 col-form-label text-right">Password</label>
+                                <label for="password" class="col-4 col-form-label text-right">パスワード</label>
                                 <div class="col-6">
                                     <input name="password" id="password" type="password" class="form-control" required>
 
@@ -56,7 +56,7 @@
 
                             <div class="form-group row">
                                 <label for="password-confirm" class="col-4 col-form-label text-right">Confirm
-                                    Password</label>
+                                    パスワード</label>
                                 <div class="col-6">
                                     <input name="password_confirmation" id="password-confirm" type="password"
                                            class="form-control" required>
@@ -66,7 +66,7 @@
                             <div class="form-group row">
                                 <div class="col-6 offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Register
+                                        登録
                                     </button>
                                 </div>
                             </div>

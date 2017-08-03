@@ -22,13 +22,13 @@ class CreatedDate
     }
 
     /**
-     * 1時間経過したかどうか
+     * 1年経過したかどうか
      *
      * @return bool
      */
-    private function hasPassedOneHour(): bool
+    private function hasPassedOneYear(): bool
     {
-        return Carbon::now()->diffInHours($this->date) > 1;
+        return Carbon::now()->diffInYears($this->date) > 0;
     }
 
     /**
@@ -42,13 +42,33 @@ class CreatedDate
     }
 
     /**
-     * 1年経過したかどうか
+     * 1時間経過したかどうか
      *
      * @return bool
      */
-    private function hasPassedOneYear(): bool
+    private function hasPassedOneHour(): bool
     {
-        return Carbon::now()->diffInYears($this->date) > 1;
+        return Carbon::now()->diffInMinutes($this->date) > 60;
+    }
+
+    /**
+     * 1分経過したかどうか
+     *
+     * @return bool
+     */
+    private function hasPassedOneMinute(): bool
+    {
+        return Carbon::now()->diffInSeconds($this->date) > 60;
+    }
+
+    /**
+     * 1秒経過したかどうか
+     *
+     * @return bool
+     */
+    private function hasPassedOneSecond(): bool
+    {
+        return Carbon::now()->diffInSeconds($this->date) > 1;
     }
 
     /**
@@ -62,8 +82,12 @@ class CreatedDate
             return $this->date->format('M j');
         } elseif ($this->hasPassedOneHour()) {
             return sprintf('%sh', Carbon::now()->diffInHours($this->date));
+        } elseif ($this->hasPassedOneMinute()) {
+            return sprintf('%sm', Carbon::now()->diffInMinutes($this->date));
+        } elseif ($this->hasPassedOneSecond()) {
+            return sprintf('%ss', Carbon::now()->diffInSeconds($this->date));
         }
 
-        return sprintf('%sm', Carbon::now()->diffInMinutes($this->date));
+        return 'now';
     }
 }

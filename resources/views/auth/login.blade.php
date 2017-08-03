@@ -13,27 +13,30 @@
                         <form method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group row {{ $errors->has('login') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('login') ? ' has-danger' : '' }}">
                                 <div class="offset-2 col-8">
-                                    <input name="login" type="text" class="form-control"
-                                           value="{{ old('login') }}" placeholder="Username or E-Mail" required autofocus>
+                                    <input name="login" type="text" class="form-control form-control-danger"
+                                           value="{{ old('login') }}" placeholder="Username or E-Mail" required
+                                           autofocus>
 
                                     @if ($errors->has('login'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('login') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('login') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="offset-2 col-8">
-                                    <input name="password" type="password" class="form-control" placeholder="Password" required>
+                                    <input name="password" type="password" class="form-control form-control-danger"
+                                           placeholder="Password"
+                                           required>
 
                                     @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>

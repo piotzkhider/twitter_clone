@@ -13,43 +13,45 @@
                         <form method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group row {{ $errors->has('username') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('username') ? ' has-danger' : '' }}">
                                 <label for="username" class="col-4 col-form-label text-right">ユーザー名</label>
                                 <div class="col-6">
-                                    <input name="username" id="username" type="text" class="form-control"
+                                    <input name="username" id="username" type="text"
+                                           class="form-control form-control-danger"
                                            value="{{ old('username') }}" required autofocus>
 
                                     @if ($errors->has('username'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <label for="email" class="col-4 col-form-label text-right">メールアドレス</label>
                                 <div class="col-6">
-                                    <input name="email" id="email" type="email" class="form-control"
+                                    <input name="email" id="email" type="email" class="form-control form-control-danger"
                                            value="{{ old('email') }}" required autofocus>
 
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <label for="password" class="col-4 col-form-label text-right">パスワード</label>
                                 <div class="col-6">
-                                    <input name="password" id="password" type="password" class="form-control" required>
+                                    <input name="password" id="password" type="password"
+                                           class="form-control form-control-danger" required>
 
                                     @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>

@@ -16,9 +16,12 @@
                             <div class="form-group row {{ $errors->has('username') ? ' has-danger' : '' }}">
                                 <label for="username" class="col-4 col-form-label text-right">ユーザー名</label>
                                 <div class="col-6">
-                                    <input name="username" id="username" type="text"
-                                           class="form-control form-control-danger"
-                                           value="{{ old('username') }}" required autofocus>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">&#64;</span>
+                                        <input name="username" id="username" type="text"
+                                               class="form-control form-control-danger"
+                                               value="{{ old('username') }}" required autofocus>
+                                    </div>
 
                                     @if ($errors->has('username'))
                                         <div class="form-control-feedback">

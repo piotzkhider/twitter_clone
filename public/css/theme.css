@@ -51,6 +51,14 @@ h1, h2, h3, h4, h5, h6,
     opacity: 1;
 }
 
+.list-group-item.active {
+    z-index: 2;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    color: inherit;
+    font-weight: bolder;
+}
+
 /* Bootstrap extension */
 
 /* theme style sheet */
@@ -133,12 +141,15 @@ input[type=text].form-search:focus {
     text-decoration: inherit;
 }
 
-.media-list-stream .media-object {
-    width: 42px;
-    margin-right: 5px;
+.media-list-stream {
+}
+
+.media-object {
 }
 
 .media-list-stream .media-object {
+    width: 42px;
+    margin-right: 5px;
     border-radius: 100%;
 }
 
@@ -148,7 +159,7 @@ input[type=text].form-search:focus {
 }
 
 @media (min-width: 576px) {
-    .media-list-stream .media-list .media-object {
+    .media-list-stream .media-object {
         display: block;
     }
 

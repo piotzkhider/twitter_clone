@@ -1,4 +1,4 @@
-<div class="card card-link-list">
+<div class="card card-link-list mb-4">
     <div class="card-block">
         &copy; AsiaQuest Co., Ltd
         <a href="#">About</a>

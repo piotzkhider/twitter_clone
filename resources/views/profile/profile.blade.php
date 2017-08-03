@@ -12,7 +12,7 @@
             </div>
 
             <div class="col-lg-6">
-                <ul class="list-group media-list media-list-stream mb-4">
+                <ul class="list-group media-list-stream mb-4">
                     @for($i = 0; $i < 5; $i++)
                         <li class="media list-group-item p-4">
                             @include('pieces.tweet')

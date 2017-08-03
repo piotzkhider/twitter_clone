@@ -13,15 +13,15 @@
                         <form method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-4 col-form-label text-right">名前</label>
+                            <div class="form-group row {{ $errors->has('username') ? ' has-error' : '' }}">
+                                <label for="username" class="col-4 col-form-label text-right">ユーザー名</label>
                                 <div class="col-6">
-                                    <input name="name" id="name" type="text" class="form-control"
-                                           value="{{ old('name') }}" required autofocus>
+                                    <input name="username" id="username" type="text" class="form-control"
+                                           value="{{ old('username') }}" required autofocus>
 
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('username'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -55,8 +55,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-4 col-form-label text-right">Confirm
-                                    パスワード</label>
+                                <label for="password-confirm" class="col-4 col-form-label text-right">パスワード(確認)</label>
                                 <div class="col-6">
                                     <input name="password_confirmation" id="password-confirm" type="password"
                                            class="form-control" required>

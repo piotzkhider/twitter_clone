@@ -41,7 +41,7 @@ class LoginController extends Controller
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
@@ -53,5 +53,32 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         return redirect()->route('login');
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        $login = $request->get($this->username());
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        return [
+            $field => $login,
+            'password' => $request->get('password'),
+        ];
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'login';
     }
 }

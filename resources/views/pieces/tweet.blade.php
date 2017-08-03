@@ -1,21 +1,11 @@
 <article class="d-flex w-100">
-    <img class="media-object d-flex align-self-start mr-3"
-         src="{{ asset('images/no-thumb.png') }}">
+    <img class="media-object d-flex align-self-start mr-3" src="{{ $tweet->user->avatar }}">
     <div class="media-body">
         <div class="mb-2">
-            <time class="float-right small text-muted">4 min</time>
-            <strong>Dave Gamache</strong>
+            <time class="float-right small text-muted">{{ $tweet->created_at }}</time>
+            <strong>{{ $tweet->user->name }}</strong>
         </div>
 
-        <p>
-            Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis
-            euismod
-            semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo
-            odio,
-            dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod
-            semper.
-            Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-            mus.
-        </p>
+        <p>{{ $tweet->body }}</p>
     </div>
 </article>

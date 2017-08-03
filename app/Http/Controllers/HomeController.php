@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
-     * 新しいコントローラインスタンスの生成
-     *
-     * @return void
+     * HomeController constructor.
      */
     public function __construct()
     {
@@ -19,11 +15,15 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|mixed
      */
     public function index()
     {
-        return view('home');
+        $me = \Auth::user()->load('friends', 'followers');
+
+        $tweets = $me->tweets()->with('user')->withFriendsTweets($me->friends)->latest()->get();
+
+        return view('home')->with('user', $me)->with('tweets', $tweets);
     }
 
     /**

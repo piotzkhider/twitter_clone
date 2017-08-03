@@ -51,7 +51,7 @@
                 <li class="hidden-md-up">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                        <span class="icon icon-log-out"></span> Logout
+                        <span class="icon icon-log-out"></span> ログアウト
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -73,7 +73,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            <span class="icon icon-log-out"></span> Logout
+                            <span class="icon icon-log-out"></span> ログアウト
                         </a>
                     </div>
                 </li>
@@ -94,12 +94,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
-
-<script>
-    $(function () {
-        $('nav #navbarResponsive a[href="' + location.href + '"]').parent().addClass('active');
-    });
-</script>
 
 @stack('scripts')
 

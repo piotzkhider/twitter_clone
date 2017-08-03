@@ -11,7 +11,7 @@
 
     <nav class="profile-header-nav">
         <ul class="nav nav-tabs justify-content-center">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a href="{{ route('profile') }}" class="nav-link">
                     Messages
                     <strong class="d-block">282</strong>

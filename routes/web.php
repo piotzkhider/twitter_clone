@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/tweet', 'HomeController@tweet')->name('tweet');
+Route::post('/home', 'HomeController@tweet');
 
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/friends', 'HomeController@friends')->name('friends');

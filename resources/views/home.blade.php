@@ -41,7 +41,7 @@
             <div class="col-lg-6">
                 <ul class="list-group media-list-stream mb-4">
                     <li class="media list-group-item p-4 {{ $errors->has('body') ? 'has-danger' : '' }}">
-                        <form method="POST" action="{{ route('tweet') }}" class="input-group">
+                        <form method="POST" action="{{ route('home') }}" class="input-group">
                             {{ csrf_field() }}
 
                             <input name="body" type="text" class="form-control" placeholder="Message">

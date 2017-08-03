@@ -1,23 +1,21 @@
 @extends('layouts.profile')
 
 @section('content')
-    @include('profile.pieces.header')
+    @include('profile.pieces.header', ['user' => $user])
 
     <div class="container pt-4">
         <div class="row">
             <div class="col-lg-3">
                 @include('profile.pieces.friendship')
-
-                @include('pieces.about')
             </div>
 
             <div class="col-lg-6">
                 <ul class="list-group media-list-stream mb-4">
-                    @for($i = 0; $i < 5; $i++)
+                    @foreach($user->tweets as $tweet)
                         <li class="media list-group-item p-4">
-                            @include('pieces.tweet')
+                            @include('pieces.tweet', ['tweet' => $tweet])
                         </li>
-                    @endfor
+                    @endforeach
                 </ul>
             </div>
 

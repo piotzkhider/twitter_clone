@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('profile') }}">
+                    <a class="nav-link" href="{{ route('profile', ['user' => Auth::user()->username]) }}">
                         <span class="icon icon-user"></span> Profile
                     </a>
                 </li>

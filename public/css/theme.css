@@ -309,6 +309,12 @@ input[type=text].form-search:focus {
     margin-bottom: inherit;
 }
 
+.has-danger .btn-secondary {
+    color: #d9534f;
+    border-color: #d9534f;
+    background-color: #fdf7f7;
+}
+
 .application {
     padding-top: 49px;
 }

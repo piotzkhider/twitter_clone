@@ -40,15 +40,23 @@
 
             <div class="col-lg-6">
                 <ul class="list-group media-list-stream mb-4">
-                    <li class="media list-group-item p-4">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Message">
+                    <li class="media list-group-item p-4 {{ $errors->has('body') ? 'has-danger' : '' }}">
+                        <form method="POST" action="{{ route('tweet') }}" class="input-group">
+                            {{ csrf_field() }}
+
+                            <input name="body" type="text" class="form-control" placeholder="Message">
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-secondary">
+                                <button type="submit" class="btn btn-secondary">
                                     <span class="icon icon-new-message"></span>
                                 </button>
                             </div>
-                        </div>
+                        </form>
+
+                        @if($errors->has('body'))
+                            <div class="form-control-feedback">
+                                <strong>{{ $errors->first('body') }}</strong>
+                            </div>
+                        @endif
                     </li>
                     @foreach($tweets as $tweet)
                         <li class="media list-group-item p-4">

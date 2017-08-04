@@ -24,6 +24,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $followers
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $friends
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tweet[] $tweets
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
@@ -108,13 +109,13 @@ class User extends Authenticatable
     }
 
     /**
-     * 同じユーザーかどうか
+     * 違うユーザーかどうか
      *
      * @param \App\Models\User $user
      * @return bool
      */
-    public function equals(User $user): bool
+    public function notEquals(User $user): bool
     {
-        return $this->id === $user->id;
+        return $this->id !== $user->id;
     }
 }

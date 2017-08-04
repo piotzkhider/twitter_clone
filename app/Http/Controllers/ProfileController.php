@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tweet;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -20,9 +21,11 @@ class ProfileController extends Controller
      */
     public function index(User $user)
     {
-        $user->load(['tweets', 'friends', 'followers']);
+        $user->load(['friends', 'followers']);
 
-        return view('profile.profile')->with('user', $user);
+        $timeline = Tweet::forProfileOf($user)->with('user')->get();
+
+        return view('profile.profile')->with(compact('user', 'timeline'));
     }
 
     /**

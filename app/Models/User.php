@@ -106,4 +106,15 @@ class User extends Authenticatable
     {
         return new Avatar($value);
     }
+
+    /**
+     * 同じユーザーかどうか
+     *
+     * @param \App\Models\User $user
+     * @return bool
+     */
+    public function equals(User $user): bool
+    {
+        return $this->id === $user->id;
+    }
 }

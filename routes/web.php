@@ -21,5 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', 'HomeController@tweet');
 
 Route::get('/{user}', 'ProfileController@index')->name('profile');
-
-Route::get('/friends', 'HomeController@friends')->name('friends');
+Route::get('/{user}/friends', 'ProfileController@friends')->name('friends');
+Route::get('/{user}/followers', 'ProfileController@followers')->name('followers');

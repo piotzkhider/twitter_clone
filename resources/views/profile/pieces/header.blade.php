@@ -12,19 +12,19 @@
     <nav class="profile-header-nav">
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">
-                <a href="{{ route('profile', ['user' => $user->username]) }}" class="nav-link">
+                <a href="{{ route('profile', [$user->username]) }}" class="nav-link">
                     Messages
                     <strong class="d-block">{{ $user->tweets->count() }}</strong>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('friends') }}" class="nav-link">
+                <a href="{{ route('friends', [$user->username]) }}" class="nav-link">
                     Friends
                     <strong class="d-block">{{ $user->friends->count() }}</strong>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('followers', [$user->username]) }}" class="nav-link">
                     Enemies
                     <strong class="d-block">{{ $user->followers->count() }}</strong>
                 </a>

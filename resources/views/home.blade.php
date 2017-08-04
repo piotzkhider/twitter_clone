@@ -22,13 +22,13 @@
 
                         <ul class="card-profile-stats">
                             <li class="card-profile-stat">
-                                <a href="#" class="text-inherit">
+                                <a href="{{ route('friends', [$user->username]) }}" class="text-inherit">
                                     Friends
                                     <strong class="d-block">{{ $user->friends->count() }}</strong>
                                 </a>
                             </li>
                             <li class="card-profile-stat">
-                                <a href="#" class="text-inherit">
+                                <a href="{{ route('followers', [$user->username]) }}" class="text-inherit">
                                     Enemies
                                     <strong class="d-block">{{ $user->followers->count() }}</strong>
                                 </a>
@@ -60,7 +60,7 @@
                     </li>
                     @foreach($tweets as $tweet)
                         <li class="media list-group-item p-4">
-                            @include('pieces.tweet', ['tweet' => $tweet])
+                            @include('pieces.tweet')
                         </li>
                     @endforeach
                 </ul>

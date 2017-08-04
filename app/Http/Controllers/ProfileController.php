@@ -24,4 +24,26 @@ class ProfileController extends Controller
 
         return view('profile.profile')->with('user', $user);
     }
+
+    /**
+     * @param \App\Models\User $user
+     * @return \Illuminate\Http\Response|mixed
+     */
+    public function friends(User $user)
+    {
+        $user->load('tweets', 'friends', 'followers');
+
+        return view('profile.friends')->with('user', $user)->with('users', $user->friends);
+    }
+
+    /**
+     * @param \App\Models\User $user
+     * @return \Illuminate\Http\Response|mixed
+     */
+    public function followers(User $user)
+    {
+        $user->load('tweets', 'friends', 'followers');
+
+        return view('profile.friends')->with('user', $user)->with('users', $user->followers);
+    }
 }

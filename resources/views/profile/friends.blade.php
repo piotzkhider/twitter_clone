@@ -1,22 +1,13 @@
 @extends('layouts.profile')
 
-@section('content')
-    @include('profile.pieces.header')
+@section('secondary-content')
+    <div class="col-lg-3">
+        @includeWhen(! Auth::user()->equals($user), 'profile.pieces.friendship')
 
-    <div class="container pt-4">
-        <div class="row">
-            <div class="col-lg-3">
-                @include('profile.pieces.friendship')
+        @include('pieces.footer')
+    </div>
 
-                @include('pieces.about')
-
-                @include('pieces.footer')
-            </div>
-
-            <div class="col-lg-9">
-                @include('profile.pieces.users')
-            </div>
-        </div>
+    <div class="col-lg-9">
+        @include('profile.pieces.users')
     </div>
 @endsection
-

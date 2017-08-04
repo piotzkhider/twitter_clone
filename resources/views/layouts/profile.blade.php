@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
+@section('primary-content')
     @include('profile.pieces.header')
 
     <div class="container pt-4">
         <div class="row">
-            @yield('content')
+            @yield('secondary-content')
         </div>
     </div>
 @endsection

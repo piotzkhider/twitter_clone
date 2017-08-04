@@ -61,7 +61,7 @@
                     </li>
                     @foreach($tweets as $tweet)
                         <li class="media list-group-item p-4">
-                            @include('pieces.tweet')
+                            @include('pieces.tweet', ['tweet' => $tweet])
                         </li>
                     @endforeach
                 </ul>

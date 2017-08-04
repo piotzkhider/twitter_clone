@@ -23,9 +23,11 @@ class HomeController extends Controller
     {
         $me = \Auth::user()->load('friends', 'followers');
 
-        $tweets = $me->tweets()->with('user')->withFriendsTweets($me->friends)->latest()->get();
+        $tweets = $me->tweets()->withFriendsTweets($me->friends)->latest()->get();
 
-        return view('home')->with('user', $me)->with('tweets', $tweets);
+        return view('home')
+            ->with('user', $me)
+            ->with('tweets', $tweets);
     }
 
     /**
@@ -39,18 +41,5 @@ class HomeController extends Controller
         \Auth::user()->tweets()->create($attributes);
 
         return redirect()->route('home');
-    }
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function profile()
-    {
-        return view('profile.profile');
-    }
-
-    public function friends()
-    {
-        return view('profile.friends');
     }
 }

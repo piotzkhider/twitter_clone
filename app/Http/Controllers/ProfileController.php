@@ -36,7 +36,7 @@ class ProfileController extends Controller
     {
         $user->load('tweets', 'friends', 'followers');
 
-        return view('profile.friends')->with('user', $user)->with('users', $user->friends);
+        return view('profile.friends')->with('user', $user);
     }
 
     /**
@@ -47,6 +47,6 @@ class ProfileController extends Controller
     {
         $user->load('tweets', 'friends', 'followers');
 
-        return view('profile.friends')->with('user', $user)->with('users', $user->followers);
+        return view('profile.followers')->with('user', $user);
     }
 }

@@ -22,7 +22,7 @@
 
 @include('layouts.fragments.nav')
 
-@include('profile.fragments.header')
+@include('layouts.fragments.header')
 
 <div class="container pt-4">
     <div class="row">

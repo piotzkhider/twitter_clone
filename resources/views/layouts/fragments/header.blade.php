@@ -14,7 +14,7 @@
             <li class="nav-item">
                 <a href="{{ route('profile', [$user->username]) }}" class="nav-link">
                     Messages
-                    <strong class="d-block">{{ $timeline->count() }}</strong>
+                    <strong class="d-block">{{ $tweets->count() }}</strong>
                 </a>
             </li>
             <li class="nav-item">

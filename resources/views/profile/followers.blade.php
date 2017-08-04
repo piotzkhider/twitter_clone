@@ -8,6 +8,6 @@
     </div>
 
     <div class="col-lg-9">
-        @include('profile.fragments.users', ['users' => $user->friends])
+        @include('profile.fragments.users', ['users' => $user->followers])
     </div>
 @endsection

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tweet;
-use App\Models\User;
+use App\Models\Account;
 
 class ProfileController extends Controller
 {
@@ -16,37 +16,37 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\Account $account
      * @return \Illuminate\Http\Response|mixed
      */
-    public function index(User $user)
+    public function index(Account $account)
     {
-        $user->load(['friends', 'followers']);
+        $account->load('profile', 'friends', 'followers');
 
-        $timeline = Tweet::forProfileOf($user)->with('user')->get();
+        $timeline = Tweet::forProfileOf($account)->with('account.profile')->get();
 
-        return view('profile.profile')->with(compact('user', 'timeline'));
+        return view('profile.profile')->with(compact('account', 'timeline'));
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\Account $account
      * @return \Illuminate\Http\Response|mixed
      */
-    public function friends(User $user)
+    public function friends(Account $account)
     {
-        $user->load('tweets', 'friends', 'followers');
+        $account->load('profile', 'tweets', 'friends.profile', 'followers');
 
-        return view('profile.friends')->with('user', $user);
+        return view('profile.friends')->with(compact('account'));
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\Account $account
      * @return \Illuminate\Http\Response|mixed
      */
-    public function followers(User $user)
+    public function followers(Account $account)
     {
-        $user->load('tweets', 'friends', 'followers');
+        $account->load('profile', 'tweets', 'friends', 'followers.profile');
 
-        return view('profile.followers')->with('user', $user);
+        return view('profile.followers')->with(compact('account'));
     }
 }

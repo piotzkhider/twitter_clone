@@ -10,9 +10,12 @@
                 </a>
 
                 <div class="card-title my-2">
-                    <a class="font-weight-bold text-inherit d-block"
-                       href="{{ route('profile', [$me->profile->name]) }}">{{ $me->profile->name }}</a>
-                    &#64;{{ $me->name }}
+                    <a href="{{ route('profile', [$me->name]) }}" class="font-weight-bold text-inherit d-block">
+                        {{ $me->profile->name }}
+                    </a>
+                    <a href="{{ route('profile', [$me->name]) }}" class="text-inherit">
+                        &#64;{{ $me->name }}
+                    </a>
                 </div>
 
                 @if($me->profile->description)

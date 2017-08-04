@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('profile', [Auth::user()->username]) }}">
+                    <a class="nav-link" href="{{ route('profile', [$me->username]) }}">
                         <span class="icon icon-user"></span> Profile
                     </a>
                 </li>

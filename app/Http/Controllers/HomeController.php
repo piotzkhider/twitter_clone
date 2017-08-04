@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TweetRequest;
+use App\Models\Tweet;
 
 class HomeController extends Controller
 {
@@ -23,11 +24,9 @@ class HomeController extends Controller
     {
         $me = \Auth::user()->load('friends', 'followers');
 
-        $tweets = $me->tweets()->withFriendsTweets($me->friends)->latest()->get();
+        $timeline = Tweet::forHomeOf($me)->get();
 
-        return view('home')
-            ->with('user', $me)
-            ->with('tweets', $tweets);
+        return view('home')->with(compact('me', 'timeline'));
     }
 
     /**

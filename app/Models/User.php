@@ -67,6 +67,16 @@ class User extends Authenticatable
     /**
      * リレーション
      *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tweets(): HasMany
+    {
+        return $this->hasMany(Tweet::class);
+    }
+
+    /**
+     * リレーション
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function friends(): BelongsToMany

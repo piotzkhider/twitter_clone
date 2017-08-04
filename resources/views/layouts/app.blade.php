@@ -20,7 +20,7 @@
 </head>
 <body class="application">
 
-@include('fragments.nav')
+@include('layouts.fragments.nav')
 
 <div class="container pt-4">
     <div class="row">

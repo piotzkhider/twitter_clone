@@ -62,6 +62,6 @@
     </div>
 
     <div class="col-lg-3">
-        @include('pieces.footer')
+        @include('fragments.footer')
     </div>
 @endsection

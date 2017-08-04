@@ -24,7 +24,7 @@ class HomeController extends Controller
     {
         $me = \Auth::user()->load('friends', 'followers');
 
-        $timeline = Tweet::forHomeOf($me)->get();
+        $timeline = Tweet::forHomeOf($me)->with('user')->get();
 
         return view('home')->with(compact('me', 'timeline'));
     }

@@ -19,11 +19,11 @@ class CreateFriendshipsTable extends Migration
             $table->timestamps();
 
             $table->foreign('sender_id')
-                ->references('id')->on('users')
+                ->references('id')->on('accounts')
                 ->onDelete('cascade');
 
             $table->foreign('recipient_id')
-                ->references('id')->on('users')
+                ->references('id')->on('accounts')
                 ->onDelete('cascade');
         });
     }

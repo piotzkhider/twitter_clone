@@ -22,9 +22,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $me = \Auth::user()->load('friends', 'followers');
+        $me = \Auth::user()->load('profile', 'friends', 'followers');
 
-        $timeline = Tweet::forHomeOf($me)->with('user')->get();
+        $timeline = Tweet::forHomeOf($me)->with('account.profile')->get();
 
         return view('home')->with(compact('me', 'timeline'));
     }

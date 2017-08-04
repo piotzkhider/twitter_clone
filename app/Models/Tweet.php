@@ -16,9 +16,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $body
  * @property \App\Domain\Models\Tweet\CreatedDate $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \App\Models\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHomeOf(\App\Models\User $me)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forProfileOf(\App\Models\User $user)
+ * @property-read \App\Models\Account $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHomeOf(\App\Models\Account $me)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forProfileOf(\App\Models\Account $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereId($value)
@@ -40,9 +40,9 @@ class Tweet extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(): BelongsTo
+    public function account(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Account::class);
     }
 
     /**
@@ -62,23 +62,23 @@ class Tweet extends Model
      * ホーム画面用のツイート一覧を取得する
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \App\Models\User $me
+     * @param \App\Models\Account $me
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForHomeOf(Builder $query, User $me): Builder
+    public function scopeForHomeOf(Builder $query, Account $me): Builder
     {
-        return $query->where('user_id', $me->id)->orWhereIn('user_id', $me->friends->pluck('id'))->latest();
+        return $query->where('account_id', $me->id)->orWhereIn('account_id', $me->friends->pluck('id'))->latest();
     }
 
     /**
      * プロフィール画面用のツイート一覧を取得する
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \App\Models\User $user
+     * @param \App\Models\Account $account
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForProfileOf(Builder $query, User $user): Builder
+    public function scopeForProfileOf(Builder $query, Account $account): Builder
     {
-        return $query->where('user_id', $user->id)->latest();
+        return $query->where('account_id', $account->id)->latest();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Models\User;
+namespace App\Domain\Models\Profile;
 
 class Avatar
 {

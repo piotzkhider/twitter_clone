@@ -24,7 +24,6 @@ use Illuminate\Notifications\Notifiable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $followers
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $friends
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tweet[] $tweets
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
@@ -68,16 +67,6 @@ class User extends Authenticatable
     /**
      * リレーション
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tweets(): HasMany
-    {
-        return $this->hasMany(Tweet::class);
-    }
-
-    /**
-     * リレーション
-     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function friends(): BelongsToMany
@@ -94,6 +83,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'friendships', 'recipient_id', 'sender_id');
     }
+
     #endregion
 
     /**

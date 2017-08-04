@@ -7,7 +7,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Collection;
 
 /**
  * App\Models\Tweet
@@ -18,12 +17,12 @@ use Illuminate\Support\Collection;
  * @property \App\Domain\Models\Tweet\CreatedDate $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHomeOf(\App\Models\User $me)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet withFriendsTweets(\Illuminate\Support\Collection $friends)
  * @mixin \Eloquent
  */
 class Tweet extends Model
@@ -46,18 +45,6 @@ class Tweet extends Model
     }
 
     /**
-     * 友達のツイートも表示する
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Support\Collection $friends
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeWithFriendsTweets(Builder $query, Collection $friends): Builder
-    {
-        return $query->orWhereIn('user_id', $friends->pluck('id'));
-    }
-
-    /**
      * アクセサ
      *
      * @param $value
@@ -68,5 +55,17 @@ class Tweet extends Model
         $parsed = Carbon::parse($value);
 
         return new CreatedDate($parsed);
+    }
+
+    /**
+     * ホーム画面用のツイート一覧を取得する
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \App\Models\User $me
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeForHomeOf(Builder $query, User $me): Builder
+    {
+        return $query->where('user_id', $me->id)->orWhereIn('user_id', $me->friends->pluck('id'))->latest();
     }
 }

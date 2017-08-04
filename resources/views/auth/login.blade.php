@@ -16,7 +16,7 @@
                             <div class="form-group row {{ $errors->has('login') ? ' has-danger' : '' }}">
                                 <div class="offset-2 col-8">
                                     <input name="login" type="text" class="form-control form-control-danger"
-                                           value="{{ old('login') }}" placeholder="Username or E-Mail" required
+                                           value="{{ old('login') }}" placeholder="Account or E-Mail" required
                                            autofocus>
 
                                     @if ($errors->has('login'))

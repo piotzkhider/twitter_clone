@@ -13,19 +13,19 @@
                         <form method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group row {{ $errors->has('username') ? ' has-danger' : '' }}">
-                                <label for="username" class="col-4 col-form-label text-right">ユーザー名</label>
+                            <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
+                                <label for="name" class="col-4 col-form-label text-right">アカウント名</label>
                                 <div class="col-6">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">&#64;</span>
-                                        <input name="username" id="username" type="text"
+                                        <input name="name" id="name" type="text"
                                                class="form-control form-control-danger"
-                                               value="{{ old('username') }}" required autofocus>
+                                               value="{{ old('name') }}" required autofocus>
                                     </div>
 
-                                    @if ($errors->has('username'))
+                                    @if ($errors->has('name'))
                                         <div class="form-control-feedback">
-                                            <strong>{{ $errors->first('username') }}</strong>
+                                            <strong>{{ $errors->first('name') }}</strong>
                                         </div>
                                     @endif
                                 </div>

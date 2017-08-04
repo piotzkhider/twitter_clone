@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('primary-content')
     <div class="container pt-4">
         <div class="row">
             <div class="col-lg-3">
@@ -12,7 +12,8 @@
                         </a>
 
                         <div class="card-title my-2">
-                            <a class="font-weight-bold text-inherit d-block" href="#">{{ $user->name }}</a>
+                            <a class="font-weight-bold text-inherit d-block"
+                               href="{{ route('profile', [$user->username]) }}">{{ $user->name }}</a>
                             &#64;{{ $user->username }}
                         </div>
 

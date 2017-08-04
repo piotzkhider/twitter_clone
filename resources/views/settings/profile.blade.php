@@ -1,6 +1,12 @@
-@extends('layouts.profile')
+@extends('layouts.settings')
 
 @section('content')
+    <div class="col-lg-3">
+        @include('settings.fragments.profile')
+
+        @include('settings.fragments.nav')
+    </div>
+
     <div class="col-lg-6">
         <ul class="list-group media-list-stream mb-4">
             <li class="media list-group-item p-4">
@@ -10,17 +16,20 @@
             </li>
             <li class="media list-group-item p-4">
                 <div class="media-body">
-                    <form>
+                    <form method="POST" action="{{ route('settings.update') }}">
+                        {{ csrf_field() }}
+
                         <div class="form-group row">
-                            <label class="col-2 col-form-label">名前</label>
+                            <label for="name" class="col-2 col-form-label">表示名</label>
                             <div class="col-10">
-                                <input class="form-control" type="text" value="Artisanal Kale">
+                                <input name="name" type="text" id="name" class="form-control" value="{{ $me->name }}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-2 col-form-label">Avatar</label>
+                            <label for="avatar" class="col-2 col-form-label">アバター</label>
                             <div class="col-10">
-                                <input type="file" class="form-control-file">
+                                <img src="{{ $me->avatar }}" class="avatar">
+                                <input name="avatar" type="file" id="avatar" class="form-control-file">
                             </div>
                         </div>
                         <div class="form-group row">

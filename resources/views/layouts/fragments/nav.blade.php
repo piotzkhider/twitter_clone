@@ -27,6 +27,11 @@
                 </li>
                 <li class="dropdown-divider"></li>
                 <li class="hidden-md-up">
+                    <a class="nav-link" href="{{ route('settings.account') }}">
+                        <span class="icon icon-cog"></span> 設定
+                    </a>
+                </li>
+                <li class="hidden-md-up">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         <span class="icon icon-log-out"></span> ログアウト
@@ -49,6 +54,9 @@
                         <img class="rounded-circle" src="{{ asset('images/no-thumb.png') }}">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="{{ route('settings.account') }}">
+                            <span class="icon icon-cog"></span> 設定
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <span class="icon icon-log-out"></span> ログアウト

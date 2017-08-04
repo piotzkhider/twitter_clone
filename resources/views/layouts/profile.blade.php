@@ -43,7 +43,7 @@
 
 <script>
     $(function () {
-        $('nav.profile-header-nav a[href="' + location.href + '"]').parent().addClass('active');
+        $('nav#profile-header a[href="' + location.href + '"]').parent().addClass('active');
     });
 </script>
 

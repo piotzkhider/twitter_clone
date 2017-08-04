@@ -6,7 +6,7 @@
             <div class="card-header bg-danger"></div>
             <div class="card-block text-center">
                 <a href="#">
-                    <img class="card-profile-img" src="{{ $me->avatar }}">
+                    <img class="avatar card-profile-img" src="{{ $me->avatar }}">
                 </a>
 
                 <div class="card-title my-2">
@@ -21,13 +21,13 @@
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
-                        <a href="{{ route('friends', [$me->username]) }}" class="text-inherit">
+                        <a href="{{ route('profile.friends', [$me->username]) }}" class="text-inherit">
                             Friends
                             <strong class="d-block">{{ $me->friends->count() }}</strong>
                         </a>
                     </li>
                     <li class="card-profile-stat">
-                        <a href="{{ route('followers', [$me->username]) }}" class="text-inherit">
+                        <a href="{{ route('profile.followers', [$me->username]) }}" class="text-inherit">
                             Enemies
                             <strong class="d-block">{{ $me->followers->count() }}</strong>
                         </a>

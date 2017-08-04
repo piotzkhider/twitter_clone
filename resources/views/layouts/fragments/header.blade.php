@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <nav class="profile-header-nav">
+    <nav class="profile-header-nav" id="profile-header">
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">
                 <a href="{{ route('profile', [$user->username]) }}" class="nav-link">
@@ -18,13 +18,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('friends', [$user->username]) }}" class="nav-link">
+                <a href="{{ route('profile.friends', [$user->username]) }}" class="nav-link">
                     Friends
                     <strong class="d-block">{{ $friends->count() }}</strong>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('followers', [$user->username]) }}" class="nav-link">
+                <a href="{{ route('profile.followers', [$user->username]) }}" class="nav-link">
                     Enemies
                     <strong class="d-block">{{ $followers->count() }}</strong>
                 </a>

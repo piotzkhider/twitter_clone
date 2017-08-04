@@ -173,13 +173,16 @@ input[type=text].form-search:focus {
     background-size: cover;
 }
 
-.card-profile-img {
+.avatar {
     max-width: 100px;
+    border: 3px solid #fff;
+}
+
+.card-profile-img {
     margin-top: -70px;
     margin-bottom: 5px;
-    border: 3px solid #fff;
-    border-radius: 100%;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
 }
 
 .card-profile-stats {

@@ -13,19 +13,19 @@
         <ul class="nav nav-tabs justify-content-center">
             <li class="nav-item">
                 <a href="{{ route('user', [$user->url_name]) }}" class="nav-link">
-                    Messages
+                    Tweets
                     <strong class="d-block">{{ $tweets->count() }}</strong>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('user.followees', [$user->url_name]) }}" class="nav-link">
-                    Friends
-                    <strong class="d-block">{{ $followees->count() }}</strong>
+                <a href="{{ route('user.following', [$user->url_name]) }}" class="nav-link">
+                    Following
+                    <strong class="d-block">{{ $following->count() }}</strong>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('user.followers', [$user->url_name]) }}" class="nav-link">
-                    Enemies
+                    Followers
                     <strong class="d-block">{{ $followers->count() }}</strong>
                 </a>
             </li>

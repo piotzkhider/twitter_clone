@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHome()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofFollowees(\App\Models\User $user)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofFollowing(\App\Models\User $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofUser(\App\Models\User $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet timeline()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereBody($value)
@@ -84,7 +84,7 @@ class Tweet extends Model
         $user = \Auth::user();
 
         return $builder->ofUser($user)->orWhere(function (Builder $query) use ($user) {
-            $query->ofFollowees($user);
+            $query->ofFollowing($user);
         });
     }
 
@@ -107,9 +107,9 @@ class Tweet extends Model
      * @param \App\Models\User $user
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOfFollowees(Builder $builder, User $user): Builder
+    public function scopeOfFollowing(Builder $builder, User $user): Builder
     {
-        return $builder->whereIn('user_id', $user->followees->pluck('id'));
+        return $builder->whereIn('user_id', $user->following->pluck('id'));
     }
 
     #endregion

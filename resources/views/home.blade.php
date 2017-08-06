@@ -24,14 +24,14 @@
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
-                        <a href="{{ route('user.followees', [$me->url_name]) }}" class="text-inherit">
-                            Friends
-                            <strong class="d-block">{{ $me->followees->count() }}</strong>
+                        <a href="{{ route('user.following', [$me->url_name]) }}" class="text-inherit">
+                            Following
+                            <strong class="d-block">{{ $me->following->count() }}</strong>
                         </a>
                     </li>
                     <li class="card-profile-stat">
                         <a href="{{ route('user.followers', [$me->url_name]) }}" class="text-inherit">
-                            Enemies
+                            Followers
                             <strong class="d-block">{{ $me->followers->count() }}</strong>
                         </a>
                     </li>
@@ -46,7 +46,7 @@
                 <form method="POST" action="{{ route('home') }}" class="input-group">
                     {{ csrf_field() }}
 
-                    <input name="body" type="text" class="form-control" placeholder="Message">
+                    <input name="body" type="text" class="form-control" placeholder="What's happening?">
                     <div class="input-group-btn">
                         <button type="submit" class="btn btn-secondary">
                             <span class="icon icon-new-message"></span>

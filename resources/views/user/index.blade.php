@@ -1,4 +1,4 @@
-@extends('layouts.user', ['me' => Auth::user(), 'tweets' => $timeline, 'followees' => $user->followees, 'followers' => $user->followers])
+@extends('layouts.user', ['me' => Auth::user(), 'tweets' => $timeline, 'following' => $user->following, 'followers' => $user->followers])
 
 @section('content')
     <div class="col-lg-3">

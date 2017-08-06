@@ -22,9 +22,9 @@ class UserController extends Controller
      * @param \App\Models\User $user
      * @return mixed
      */
-    public function followees(User $user)
+    public function following(User $user)
     {
-        return view('user.followees')->with(compact('user'));
+        return view('user.following')->with(compact('user'));
     }
 
     /**

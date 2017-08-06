@@ -50,6 +50,8 @@ class User extends Authenticatable
         'url_name',
         'email',
         'password',
+        'display_name',
+        'avatar',
     ];
 
     /**

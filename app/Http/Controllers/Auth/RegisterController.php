@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Account;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 
@@ -46,8 +46,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255', 'unique:accounts'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:accounts'],
+            'url_name' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
@@ -56,20 +56,14 @@ class RegisterController extends Controller
      * ユーザ登録成功後の新しいユーザインスタンス取得
      *
      * @param  array $data
-     * @return \App\Models\Account
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        $account = Account::create([
-            'name' => $data['name'],
+        return User::create([
+            'url_name' => $data['url_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-
-        $account->profile()->create([
-            'name' => $data['name'],
-        ]);
-
-        return $account;
     }
 }

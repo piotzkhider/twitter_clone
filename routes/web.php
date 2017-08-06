@@ -18,8 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::post('/home', 'HomeController@tweet');
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::post('home', 'HomeController@post');
 
     Route::group(['namespace' => 'Settings', 'prefix' => 'settings'], function () {
         Route::get('account', 'AccountController@edit')->name('settings.account');

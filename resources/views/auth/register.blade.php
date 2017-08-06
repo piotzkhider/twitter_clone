@@ -13,19 +13,19 @@
                         <form method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group row {{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label for="name" class="col-4 col-form-label text-right">アカウント名</label>
+                            <div class="form-group row {{ $errors->has('url_name') ? ' has-danger' : '' }}">
+                                <label for="url_name" class="col-4 col-form-label text-right">ユーザ名</label>
                                 <div class="col-6">
                                     <div class="input-group">
                                         <span class="input-group-addon" id="sizing-addon2">&#64;</span>
-                                        <input name="name" id="name" type="text"
+                                        <input name="url_name" type="text" id="url_name"
                                                class="form-control form-control-danger"
-                                               value="{{ old('name') }}" required autofocus>
+                                               value="{{ old('url_name') }}" required autofocus>
                                     </div>
 
-                                    @if ($errors->has('name'))
+                                    @if ($errors->has('url_name'))
                                         <div class="form-control-feedback">
-                                            <strong>{{ $errors->first('name') }}</strong>
+                                            <strong>{{ $errors->first('url_name') }}</strong>
                                         </div>
                                     @endif
                                 </div>
@@ -35,7 +35,7 @@
                                 <label for="email" class="col-4 col-form-label text-right">メールアドレス</label>
                                 <div class="col-6">
                                     <input name="email" id="email" type="email" class="form-control form-control-danger"
-                                           value="{{ old('email') }}" required autofocus>
+                                           value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
                                         <div class="form-control-feedback">

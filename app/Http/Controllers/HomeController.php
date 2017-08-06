@@ -2,43 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TweetRequest;
+use App\Http\Requests\PostRequest;
 use App\Models\Tweet;
 
 class HomeController extends Controller
 {
     /**
-     * HomeController constructor.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response|mixed
+     * @return mixed
      */
     public function index()
     {
-        $me = \Auth::user()->load('profile', 'friends', 'followers');
+        $me = \Auth::user();
 
-        $timeline = Tweet::forHomeOf($me)->with('account.profile')->get();
+        $timeline = Tweet::timeline()->forHome()->get();
 
         return view('home')->with(compact('me', 'timeline'));
     }
 
     /**
-     * @param \App\Http\Requests\TweetRequest $request
+     * @param \App\Http\Requests\PostRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function tweet(TweetRequest $request)
+    public function post(PostRequest $request)
     {
         $attributes = $request->only('body');
 
         \Auth::user()->tweets()->create($attributes);
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
 }

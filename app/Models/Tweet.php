@@ -16,9 +16,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $body
  * @property \App\Domain\Models\Tweet\CreatedDate $created_at
  * @property \Carbon\Carbon|null $updated_at
- * @property-read \App\Models\Account $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHomeOf(\App\Models\Account $me)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forProfileOf(\App\Models\Account $user)
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHome()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofFollowees(\App\Models\User $user)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofUser(\App\Models\User $user)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet timeline()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereId($value)
@@ -40,9 +42,9 @@ class Tweet extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function account(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Account::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -58,27 +60,57 @@ class Tweet extends Model
         return new CreatedDate($parsed);
     }
 
+    #region スコープ
+
     /**
-     * ホーム画面用のツイート一覧を取得する
+     * 時系列降順に並び替える
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \App\Models\Account $me
+     * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForHomeOf(Builder $query, Account $me): Builder
+    public function scopeTimeline(Builder $builder): Builder
     {
-        return $query->where('account_id', $me->id)->orWhereIn('account_id', $me->friends->pluck('id'))->latest();
+        return $builder->latest();
     }
 
     /**
-     * プロフィール画面用のツイート一覧を取得する
+     * ホームに必要なツイートに絞り込む
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \App\Models\Account $account
+     * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeForProfileOf(Builder $query, Account $account): Builder
+    public function scopeForHome(Builder $builder): Builder
     {
-        return $query->where('account_id', $account->id)->latest();
+        $user = \Auth::user();
+
+        return $builder->ofUser($user)->orWhere(function (Builder $query) use ($user) {
+            $query->ofFollowees($user);
+        });
     }
+
+    /**
+     * ユーザーのツイートに絞り込む
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \App\Models\User $user
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfUser(Builder $builder, User $user): Builder
+    {
+        return $builder->where('user_id', $user->id);
+    }
+
+    /**
+     * フォロイーのツイートに絞り込む
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \App\Models\User $user
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfFollowees(Builder $builder, User $user): Builder
+    {
+        return $builder->whereIn('user_id', $user->followees->pluck('id'));
+    }
+
+    #endregion
 }

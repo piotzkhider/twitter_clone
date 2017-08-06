@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Models\Profile;
+namespace App\Domain\Models\User;
 
-class Avatar
+class ProfileImage
 {
     /**
      * @var null|string
@@ -22,7 +22,7 @@ class Avatar
     /**
      * @var string
      */
-    private $folderPath = 'images/avatars';
+    private $folderPath = 'images/profile_images';
 
     /**
      * @var string

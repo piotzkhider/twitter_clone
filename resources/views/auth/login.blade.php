@@ -15,9 +15,9 @@
 
                             <div class="form-group row {{ $errors->has('login') ? ' has-danger' : '' }}">
                                 <div class="offset-2 col-8">
-                                    <input name="login" type="text" class="form-control form-control-danger"
-                                           value="{{ old('login') }}" placeholder="Account or E-Mail" required
-                                           autofocus>
+                                    <input name="login" type="text" value="{{ old('login') }}"
+                                           class="form-control form-control-danger"
+                                           placeholder="Username or E-Mail" required autofocus>
 
                                     @if ($errors->has('login'))
                                         <div class="form-control-feedback">
@@ -30,8 +30,7 @@
                             <div class="form-group row {{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="offset-2 col-8">
                                     <input name="password" type="password" class="form-control form-control-danger"
-                                           placeholder="Password"
-                                           required>
+                                           placeholder="Password" required>
 
                                     @if ($errors->has('password'))
                                         <div class="form-control-feedback">

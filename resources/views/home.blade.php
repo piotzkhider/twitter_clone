@@ -6,31 +6,31 @@
             <div class="card-header bg-danger"></div>
             <div class="card-block text-center">
                 <a href="{{ route('settings.profile') }}">
-                    <img class="avatar card-profile-img" src="{{ $me->profile->avatar }}">
+                    <img class="avatar card-profile-img" src="{{ $me->profile_image_url }}">
                 </a>
 
                 <div class="card-title my-2">
-                    <a href="{{ route('profile', [$me->name]) }}" class="font-weight-bold text-inherit d-block">
-                        {{ $me->profile->name }}
+                    <a href="{{ route('profile', [$me->url_name]) }}" class="font-weight-bold text-inherit d-block">
+                        {{ $me->url_name }}
                     </a>
-                    <a href="{{ route('profile', [$me->name]) }}" class="text-inherit">
-                        &#64;{{ $me->name }}
+                    <a href="{{ route('profile', [$me->url_name]) }}" class="text-inherit">
+                        &#64;{{ $me->url_name }}
                     </a>
                 </div>
 
-                @if($me->profile->description)
-                    <p class="mb-4">{{ $me->profile->description }}</p>
+                @if($me->description)
+                    <p class="mb-4">{{ $me->description }}</p>
                 @endif
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
-                        <a href="{{ route('profile.friends', [$me->name]) }}" class="text-inherit">
+                        <a href="{{ route('profile.friends', [$me->url_name]) }}" class="text-inherit">
                             Friends
-                            <strong class="d-block">{{ $me->friends->count() }}</strong>
+                            <strong class="d-block">{{ $me->followees->count() }}</strong>
                         </a>
                     </li>
                     <li class="card-profile-stat">
-                        <a href="{{ route('profile.followers', [$me->name]) }}" class="text-inherit">
+                        <a href="{{ route('profile.followers', [$me->url_name]) }}" class="text-inherit">
                             Enemies
                             <strong class="d-block">{{ $me->followers->count() }}</strong>
                         </a>

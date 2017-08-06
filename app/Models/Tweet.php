@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domain\Models\Search\Conditions;
 use App\Domain\Models\Tweet\CreatedDate;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHome()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofFollowing(\App\Models\User $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofUser(\App\Models\User $user)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet search($words)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet timeline()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereCreatedAt($value)
@@ -110,6 +112,22 @@ class Tweet extends Model
     public function scopeOfFollowing(Builder $builder, User $user): Builder
     {
         return $builder->whereIn('user_id', $user->following->pluck('id'));
+    }
+
+    /**
+     * 本文を検索する
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @param \App\Domain\Models\Search\Conditions $conditions
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch(Builder $builder, Conditions $conditions): Builder
+    {
+        return $builder->where(function (Builder $builder) use ($conditions) {
+            foreach ($conditions->split() as $condition) {
+                $builder->where('body', 'like', '%'.$condition.'%');
+            }
+        });
     }
 
     #endregion

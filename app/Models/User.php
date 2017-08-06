@@ -17,7 +17,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string|null $display_name
  * @property string|null $description
- * @property \App\Domain\Models\User\Avatar $profile_image_url
+ * @property \App\Domain\Models\User\Avatar $avatar
  * @property string|null $remember_token
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
@@ -25,13 +25,13 @@ use Illuminate\Notifications\Notifiable;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $followers
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tweet[] $tweets
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDisplayName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereProfileImageUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUrlName($value)
@@ -114,13 +114,13 @@ class User extends Authenticatable
     #endregion
 
     /**
-     * 違うユーザーかどうか
+     * 同じユーザーかどうか
      *
      * @param \App\Models\User $user
      * @return bool
      */
-    public function notEquals(User $user): bool
+    public function equals(User $user): bool
     {
-        return $this->id !== $user->id;
+        return $this->id === $user->id;
     }
 }

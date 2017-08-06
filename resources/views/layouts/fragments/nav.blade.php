@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{{ route('profile', [$me->name]) }}">
+                    <a class="nav-link" href="{{ route('user', [$me->url_name]) }}">
                         <span class="icon icon-user"></span> Profile
                     </a>
                 </li>

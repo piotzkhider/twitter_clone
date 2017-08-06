@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
         Route::put('profile', 'ProfileController@update');
     });
 
-    Route::get('/{account}', 'ProfileController@index')->name('profile');
-    Route::get('/{account}/friends', 'ProfileController@friends')->name('profile.friends');
-    Route::get('/{account}/followers', 'ProfileController@followers')->name('profile.followers');
+    Route::get('/{user}', 'UserController@index')->name('user');
+    Route::get('/{user}/followees', 'UserController@followees')->name('user.followees');
+    Route::get('/{user}/followers', 'UserController@followers')->name('user.followers');
 });

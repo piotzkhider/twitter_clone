@@ -23,9 +23,10 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        $attributes = $request->only('display_name', 'avatar');
+        $displayName = $request->input('display_name');
+        $avatar = $request->file('avatar');
 
-        \Auth::user()->update($attributes);
+        \Auth::user()->update(['display_name' => $displayName, 'avatar' => $avatar->getClientOriginalName()]);
 
         return redirect()->back();
     }

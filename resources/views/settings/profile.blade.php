@@ -18,7 +18,7 @@
             </li>
             <li class="media list-group-item p-4">
                 <div class="media-body">
-                    <form method="POST" action="{{ route('settings.profile') }}">
+                    <form method="POST" action="{{ route('settings.profile') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 

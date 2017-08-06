@@ -18,10 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('search', 'Search')->name('search');
-
     Route::get('home', 'HomeController@index')->name('home');
     Route::post('home', 'HomeController@post');
+
+    Route::post('search', 'Search')->name('search');
 
     Route::group(['namespace' => 'Settings', 'prefix' => 'settings'], function () {
         Route::get('account', 'AccountController@edit')->name('settings.account');
@@ -30,7 +30,12 @@ Route::middleware(['auth'])->group(function () {
         Route::put('profile', 'ProfileController@update');
     });
 
-    Route::get('/{user}', 'UserController@index')->name('user');
-    Route::get('/{user}/following', 'UserController@following')->name('user.following');
-    Route::get('/{user}/followers', 'UserController@followers')->name('user.followers');
+    Route::get('{user}', 'UserController@index')->name('user');
+    Route::get('{user}/following', 'UserController@following')->name('user.following');
+    Route::get('{user}/followers', 'UserController@followers')->name('user.followers');
+
+    Route::namespace('Friendship')->group(function () {
+        Route::post('{user}/follow', 'Follow')->name('follow');
+        Route::post('{user}/unfollow', 'Unfollow')->name('unfollow');
+    });
 });

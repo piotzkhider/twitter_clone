@@ -83,7 +83,7 @@ class User extends Authenticatable
      */
     public function following(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'friendships', 'sender_id', 'recipient_id');
+        return $this->belongsToMany(User::class, 'friendships', 'follower_id', 'followee_id')->withTimestamps();
     }
 
     /**
@@ -93,12 +93,10 @@ class User extends Authenticatable
      */
     public function followers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'friendships', 'recipient_id', 'sender_id');
+        return $this->belongsToMany(User::class, 'friendships', 'followee_id', 'follower_id')->withTimestamps();
     }
 
     #endregion
-
-    #region アクセサ
 
     /**
      * アクセサ
@@ -111,7 +109,36 @@ class User extends Authenticatable
         return new Avatar($value);
     }
 
-    #endregion
+    /**
+     * フォローする
+     *
+     * @param \App\Models\User $followee
+     */
+    public function follow(User $followee)
+    {
+        $this->following()->attach($followee->id);
+    }
+
+    /**
+     * フォローを外す
+     *
+     * @param \App\Models\User $followee
+     */
+    public function unfollow(User $followee)
+    {
+        $this->following()->detach($followee->id);
+    }
+
+    /**
+     * フォローしているかどうか
+     *
+     * @param \App\Models\User $user
+     * @return bool
+     */
+    public function isFollowingWith(User $user): bool
+    {
+        return $this->following()->wherePivot('followee_id', $user->id)->exists();
+    }
 
     /**
      * 同じユーザーかどうか

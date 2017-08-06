@@ -13,9 +13,11 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
+        $me = \Auth::user();
+
         $timeline = Tweet::timeline()->ofUser($user)->get();
 
-        return view('user.index')->with(compact('user', 'timeline'));
+        return view('user.index')->with(compact('me', 'user', 'timeline'));
     }
 
     /**
@@ -24,7 +26,9 @@ class UserController extends Controller
      */
     public function following(User $user)
     {
-        return view('user.following')->with(compact('user'));
+        $me = \Auth::user();
+
+        return view('user.following')->with(compact('me', 'user'));
     }
 
     /**
@@ -33,6 +37,8 @@ class UserController extends Controller
      */
     public function followers(User $user)
     {
-        return view('user.followers')->with(compact('user'));
+        $me = \Auth::user();
+
+        return view('user.followers')->with(compact('me', 'user'));
     }
 }

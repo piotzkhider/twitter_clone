@@ -8,9 +8,9 @@
                         <img class="avatar card-profile-img" src="{{ $user->avatar }}">
                     </a>
 
-                    <button class="btn btn-outline-primary btn-sm float-right">
-                        <span class="icon icon-add-user"></span> Follow
-                    </button>
+                    <span class="float-right">
+                        @include('fragments.friendship.small')
+                    </span>
 
                     <strong class="card-title d-block">
                         <a class="text-inherit" href="{{ route('user', [$user->url_name]) }}">

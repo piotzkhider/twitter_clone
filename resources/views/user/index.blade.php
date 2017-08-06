@@ -1,10 +1,8 @@
-@extends('layouts.user', ['me' => Auth::user(), 'tweets' => $timeline, 'following' => $user->following, 'followers' => $user->followers])
+@extends('layouts.user', ['tweets' => $timeline, 'following' => $user->following, 'followers' => $user->followers])
 
 @section('content')
     <div class="col-lg-3">
-        @unless(Auth::user()->equals($user))
-            @include('user.fragments.friendship')
-        @endunless
+        @include('user.fragments.friendship')
     </div>
 
     <div class="col-lg-6">

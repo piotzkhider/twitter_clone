@@ -7,7 +7,7 @@
 
         <div class="card-title my-2">
             <a class="font-weight-bold text-inherit d-block"
-               href="{{ route('profile', [$me->url_name]) }}">{{ $me->display_name }}</a>
+               href="{{ route('user', [$me->url_name]) }}">{{ $me->display_name }}</a>
             &#64;{{ $me->url_name }}
         </div>
     </div>

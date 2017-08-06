@@ -18,13 +18,21 @@ class UserController extends Controller
         return view('user.index')->with(compact('user', 'timeline'));
     }
 
-    public function followees()
+    /**
+     * @param \App\Models\User $user
+     * @return mixed
+     */
+    public function followees(User $user)
     {
-        //
+        return view('user.followees')->with(compact('user'));
     }
 
-    public function followers()
+    /**
+     * @param \App\Models\User $user
+     * @return mixed
+     */
+    public function followers(User $user)
     {
-        //
+        return view('user.followers')->with(compact('user'));
     }
 }

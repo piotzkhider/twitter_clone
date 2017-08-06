@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('user.followers', [$user->name]) }}" class="nav-link">
+                <a href="{{ route('user.followers', [$user->url_name]) }}" class="nav-link">
                     Enemies
                     <strong class="d-block">{{ $followers->count() }}</strong>
                 </a>

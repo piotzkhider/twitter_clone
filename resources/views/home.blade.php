@@ -10,10 +10,10 @@
                 </a>
 
                 <div class="card-title my-2">
-                    <a href="{{ route('profile', [$me->url_name]) }}" class="font-weight-bold text-inherit d-block">
-                        {{ $me->url_name }}
+                    <a href="{{ route('user', [$me->url_name]) }}" class="font-weight-bold text-inherit d-block">
+                        {{ $me->display_name }}
                     </a>
-                    <a href="{{ route('profile', [$me->url_name]) }}" class="text-inherit">
+                    <a href="{{ route('user', [$me->url_name]) }}" class="text-inherit">
                         &#64;{{ $me->url_name }}
                     </a>
                 </div>
@@ -24,13 +24,13 @@
 
                 <ul class="card-profile-stats">
                     <li class="card-profile-stat">
-                        <a href="{{ route('profile.friends', [$me->url_name]) }}" class="text-inherit">
+                        <a href="{{ route('user.followees', [$me->url_name]) }}" class="text-inherit">
                             Friends
                             <strong class="d-block">{{ $me->followees->count() }}</strong>
                         </a>
                     </li>
                     <li class="card-profile-stat">
-                        <a href="{{ route('profile.followers', [$me->url_name]) }}" class="text-inherit">
+                        <a href="{{ route('user.followers', [$me->url_name]) }}" class="text-inherit">
                             Enemies
                             <strong class="d-block">{{ $me->followers->count() }}</strong>
                         </a>

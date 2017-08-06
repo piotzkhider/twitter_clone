@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Domain\Models\User\ProfileImage;
+use App\Domain\Models\User\Avatar;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +17,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string|null $display_name
  * @property string|null $description
- * @property \App\Domain\Models\User\ProfileImage $profile_image_url
+ * @property \App\Domain\Models\User\Avatar $profile_image_url
  * @property string|null $remember_token
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
@@ -102,11 +102,11 @@ class User extends Authenticatable
      * アクセサ
      *
      * @param null|string $value
-     * @return \App\Domain\Models\User\ProfileImage
+     * @return \App\Domain\Models\User\Avatar
      */
-    public function getProfileImageUrlAttribute(?string $value): ProfileImage
+    public function getAvatarAttribute(?string $value): Avatar
     {
-        return new ProfileImage($value);
+        return new Avatar($value);
     }
 
     #endregion

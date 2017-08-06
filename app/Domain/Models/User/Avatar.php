@@ -2,7 +2,7 @@
 
 namespace App\Domain\Models\User;
 
-class ProfileImage
+class Avatar
 {
     /**
      * @var null|string
@@ -22,7 +22,7 @@ class ProfileImage
     /**
      * @var string
      */
-    private $folderPath = 'images/profile_images';
+    private $folderPath = 'images/avatars';
 
     /**
      * @var string

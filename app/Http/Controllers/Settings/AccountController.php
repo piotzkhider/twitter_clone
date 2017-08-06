@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Settings\UpdateAccountRequest;
 
 class AccountController extends Controller
 {
@@ -18,11 +18,15 @@ class AccountController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\Settings\UpdateAccountRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request)
+    public function update(UpdateAccountRequest $request)
     {
-        return redirect()->route('settings.account');
+        $attributes = $request->only('url_name', 'email', 'password');
+
+        \Auth::user()->update($attributes);
+
+        return redirect()->back();
     }
 }

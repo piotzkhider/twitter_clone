@@ -17,13 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/home', 'HomeController@tweet');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/home', 'HomeController@tweet');
 
-Route::get('/settings/account', 'SettingsController@account')->name('settings.account');
-Route::get('/settings/profile', 'SettingsController@profile')->name('settings.profile');
-Route::post('/settings', 'SettingsController@update')->name('settings.update');
+    Route::group(['namespace' => 'Settings', 'prefix' => 'settings'], function () {
+        Route::get('account', 'AccountController@edit')->name('settings.account');
+        Route::put('account', 'AccountController@update');
+        Route::get('profile', 'ProfileController@edit')->name('settings.profile');
+        Route::put('profile', 'ProfileController@update');
+    });
 
-Route::get('/{account}', 'ProfileController@index')->name('profile');
-Route::get('/{account}/friends', 'ProfileController@friends')->name('profile.friends');
-Route::get('/{account}/followers', 'ProfileController@followers')->name('profile.followers');
+    Route::get('/{account}', 'ProfileController@index')->name('profile');
+    Route::get('/{account}/friends', 'ProfileController@friends')->name('profile.friends');
+    Route::get('/{account}/followers', 'ProfileController@followers')->name('profile.followers');
+});

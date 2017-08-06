@@ -5,6 +5,8 @@
         @include('settings.fragments.profile')
 
         @include('settings.fragments.nav')
+
+        @include('fragments.footer')
     </div>
 
     <div class="col-lg-6">
@@ -16,19 +18,19 @@
             </li>
             <li class="media list-group-item p-4">
                 <div class="media-body">
-                    <form method="POST" action="{{ route('settings.update') }}">
+                    <form method="POST" action="{{ route('settings.profile') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group row">
                             <label for="name" class="col-2 col-form-label">表示名</label>
                             <div class="col-10">
-                                <input name="name" type="text" id="name" class="form-control" value="{{ $me->name }}">
+                                <input name="name" type="text" id="name" class="form-control" value="{{ $me->profile->name }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="avatar" class="col-2 col-form-label">アバター</label>
                             <div class="col-10">
-                                <img src="{{ $me->avatar }}" class="avatar">
+                                <img src="{{ $me->profile->avatar }}" class="avatar">
                                 <input name="avatar" type="file" id="avatar" class="form-control-file">
                             </div>
                         </div>

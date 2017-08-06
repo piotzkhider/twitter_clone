@@ -41,7 +41,7 @@
 
 <script>
     $(function () {
-        $('#nav-setting').find('a[href="' + location.href + '"]').addClass('active');
+        $('a[href="' + location.href + '"]').addClass('active');
     });
 </script>
 

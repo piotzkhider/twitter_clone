@@ -5,6 +5,8 @@
         @include('settings.fragments.profile')
 
         @include('settings.fragments.nav')
+
+        @include('fragments.footer')
     </div>
 
     <div class="col-lg-6">
@@ -16,14 +18,14 @@
             </li>
             <li class="media list-group-item p-4">
                 <div class="media-body">
-                    <form method="POST" action="{{ route('settings.update') }}">
+                    <form method="POST" action="{{ route('settings.account') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group row">
                             <label for="username" class="col-4 col-form-label">ユーザー名</label>
                             <div class="col-8">
                                 <input name="username" type="text" id="username" class="form-control"
-                                       value="{{ $me->username }}">
+                                       value="{{ $me->name }}">
                             </div>
                         </div>
                         <div class="form-group row">

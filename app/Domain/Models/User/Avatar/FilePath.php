@@ -70,6 +70,6 @@ class FilePath
      */
     public function __toString()
     {
-        return $this->value;
+        return asset($this->value);
     }
 }

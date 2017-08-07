@@ -324,7 +324,11 @@ input[type=text].form-search:focus {
 }
 
 .following {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8;
     width: 6rem;
+    transition: all 0s ease;
 }
 
 .following span:nth-child(1) {

@@ -2,16 +2,17 @@
     <form action="{{ route('unfollow', [$user->url_name]) }}" method="POST">
         {{ csrf_field() }}
 
-        <button type="submit" class="btn btn-outline-danger btn-md">
-            <span class="icon icon-add-user"></span> Unfollow
+        <button type="submit" class="btn btn-outline-danger btn-md following">
+            <span>フォロー中</span>
+            <span>解除</span>
         </button>
     </form>
 @else
     <form action="{{ route('follow', [$user->url_name]) }}" method="POST">
         {{ csrf_field() }}
 
-        <button type="submit" class="btn btn-outline-primary btn-md">
-            <span class="icon icon-add-user"></span> Follow
-        </button>
+        @unless($me->equals($user))
+            <button type="submit" class="btn btn-outline-primary btn-md">フォローする</button>
+        @endunless
     </form>
 @endif

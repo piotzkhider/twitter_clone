@@ -323,6 +323,26 @@ input[type=text].form-search:focus {
     background-color: #fdf7f7;
 }
 
+.following {
+    width: 6rem;
+}
+
+.following span:nth-child(1) {
+    display: inline;
+}
+
+.following:hover span:nth-child(1) {
+    display: none;
+}
+
+.following span:nth-child(2) {
+    display: none;
+}
+
+.following:hover span:nth-child(2) {
+    display: inline;
+}
+
 .application {
     padding-top: 49px;
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Domain\Models\User\Avatar;
+use App\Domain\Models\User\Avatar\Avatar;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +17,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string|null $display_name
  * @property string|null $description
- * @property \App\Domain\Models\User\Avatar $avatar
+ * @property \App\Domain\Models\User\Avatar\Avatar $avatar
  * @property string|null $remember_token
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
@@ -101,12 +101,12 @@ class User extends Authenticatable
     /**
      * アクセサ
      *
-     * @param null|string $value
-     * @return \App\Domain\Models\User\Avatar
+     * @param string $value
+     * @return \App\Domain\Models\User\Avatar\Avatar
      */
-    public function getAvatarAttribute(?string $value): Avatar
+    public function getAvatarAttribute(string $value): Avatar
     {
-        return new Avatar($value);
+        return Avatar::fromStoredPath($value);
     }
 
     /**

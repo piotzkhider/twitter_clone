@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Domain\Models\User\Avatar\AvatarStorage;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -47,7 +48,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'url_name' => ['required', 'string', 'alpha_num',  'max:15', Rule::unique('users')],
+            'url_name' => ['required', 'string', 'alpha_num', 'max:15', Rule::unique('users')],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
         ]);
@@ -66,6 +67,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'display_name' => $data['url_name'],
+            'avatar' => AvatarStorage::defaultAvatarPath(),
         ]);
     }
 }

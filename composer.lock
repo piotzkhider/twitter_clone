@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6dc55dda70e09b6890685f08c7463869",
+    "content-hash": "88adfa68648fb75460aaab47323b7b12",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -837,6 +837,47 @@
                 "random"
             ],
             "time": "2017-03-13T16:27:32+00:00"
+        },
+        {
+            "name": "piotzkhider/nonunicode-validation",
+            "version": "5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/piotzkhider/nonunicode-validation.git",
+                "reference": "25cd0c3f774417402373894042f13fcfd98a7e6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/piotzkhider/nonunicode-validation/zipball/25cd0c3f774417402373894042f13fcfd98a7e6c",
+                "reference": "25cd0c3f774417402373894042f13fcfd98a7e6c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.4.*",
+                "illuminate/validation": "5.4.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Piotzkhider\\NonUnicodeValidation\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "piotzkhider",
+                    "email": "email@example.com"
+                }
+            ],
+            "description": "Validation package that does not pass Unicode.",
+            "keywords": [
+                "laravel"
+            ],
+            "time": "2017-07-29T18:17:18+00:00"
         },
         {
             "name": "psr/log",

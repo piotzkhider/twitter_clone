@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet forHome()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofFollowing(\App\Models\User $user)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet ofUser(\App\Models\User $user)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet search($words)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet search(\App\Domain\Models\Search\Conditions $conditions)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet timeline()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereBody($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tweet whereCreatedAt($value)

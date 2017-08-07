@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
 
         $sato = User::create([
             'url_name' => 'sato',
-            'email' => 'sato@asia-quest.jp',
+            'email' => 'sato@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Yoshihiro',
             'description' => '勉強するデブ',
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         $makino = User::create([
             'url_name' => 'makino',
-            'email' => 'makino@asia-quest.jp',
+            'email' => 'makino@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Shinichi',
             'description' => '勉強するヒョロガリ',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
 
         $tsukinari = User::create([
             'url_name' => 'tsukinari',
-            'email' => 'kenta.tsukinari@asia-quest.jp',
+            'email' => 'kenta.tsukinari@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Kenta',
             'description' => '結婚したいです',
@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
 
         $kaneshima = User::create([
             'url_name' => 'kaneshima',
-            'email' => '	yushi.kaneshima@asia-quest.jp',
+            'email' => '	yushi.kaneshima@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Yushi',
             'avatar' => FilePath::default(),
@@ -54,17 +54,17 @@ class DatabaseSeeder extends Seeder
 
         $inoue = User::create([
             'url_name' => 'inoue',
-            'email' => 'eri.inoue@asia-quest.jp',
+            'email' => 'eri.inoue@example.co.jp',
             'password' => bcrypt('password'),
-            'display_name' => 'eri',
+            'display_name' => 'Eri',
             'avatar' => FilePath::default(),
         ]);
 
         $imai = User::create([
             'url_name' => 'imai',
-            'email' => 'imai@asia-quest.jp',
+            'email' => 'imai@example.co.jp',
             'password' => bcrypt('password'),
-            'display_name' => 'hiroki',
+            'display_name' => 'Hiroki',
             'avatar' => FilePath::default(),
         ]);
 

@@ -1,4 +1,4 @@
-<ul class="row list-unstyled">
+<ul class="row list-unstyled card-columns">
     @foreach($users as $user)
         <li class="col-xl-4 col-md-6">
             <div class="card card-profile mb-4">
@@ -18,7 +18,7 @@
                         </a>
                     </strong>
 
-                    <p class="mb-4">{{ $user->description }}</p>
+                    <p class="lineclamp">{{ $user->description }}</p>
                 </div>
             </div>
         </li>

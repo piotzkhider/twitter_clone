@@ -346,6 +346,13 @@ input[type=text].form-search:focus {
     display: inline;
 }
 
+.lineclamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
 .application {
     padding-top: 49px;
 }

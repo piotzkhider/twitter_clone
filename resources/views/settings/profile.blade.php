@@ -6,7 +6,9 @@
 
         @include('settings.fragments.nav')
 
-        @include('fragments.footer')
+        <div class="hidden-md-down">
+            @include('fragments.footer')
+        </div>
     </div>
 
     <div class="col-lg-6">
@@ -57,5 +59,9 @@
                 </div>
             </li>
         </ul>
+
+        <div class="hidden-lg-up">
+            @include('fragments.footer')
+        </div>
     </div>
 @endsection

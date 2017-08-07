@@ -26,6 +26,7 @@ class UpdateProfileRequest extends FormRequest
         return [
             'display_name' => ['string', 'nullable', 'max:20'],
             'avatar' => ['image', 'nullable'],
+            'description' => ['string', 'nullable', 'max:160'],
         ];
     }
 }

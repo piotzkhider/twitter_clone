@@ -1,6 +1,6 @@
 <ul class="row list-unstyled">
     @foreach($users as $user)
-        <li class="col-lg-4">
+        <li class="col-xl-4 col-md-6">
             <div class="card card-profile mb-4">
                 <div class="card-header bg-danger"></div>
                 <div class="card-block">

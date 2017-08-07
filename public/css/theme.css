@@ -327,7 +327,6 @@ input[type=text].form-search:focus {
     color: #fff;
     background-color: #0275d8;
     border-color: #0275d8;
-    width: 6rem;
     transition: all 0s ease;
 }
 

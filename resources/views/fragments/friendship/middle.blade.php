@@ -2,7 +2,7 @@
     <form action="{{ route('unfollow', [$user->url_name]) }}" method="POST">
         {{ csrf_field() }}
 
-        <button type="submit" class="btn btn-outline-danger btn-md following">
+        <button type="submit" class="btn btn-outline-danger btn-md following" style="width: 7rem;">
             <span>フォロー中</span>
             <span>解除</span>
         </button>

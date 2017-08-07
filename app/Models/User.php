@@ -139,6 +139,17 @@ class User extends Authenticatable
     #endregion
 
     /**
+     * つぶやく
+     *
+     * @param string $body
+     * @return \Illuminate\Database\Eloquent\Model|\App\Models\Tweet
+     */
+    public function tweet(string $body)
+    {
+        return $this->tweets()->create(['body' => $body]);
+    }
+
+    /**
      * フォローする
      *
      * @param \App\Models\User $followee

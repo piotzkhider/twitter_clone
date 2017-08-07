@@ -25,9 +25,9 @@ class HomeController extends Controller
      */
     public function post(PostRequest $request)
     {
-        $attributes = $request->only('body');
+        $body = $request->input('body');
 
-        \Auth::user()->tweets()->create($attributes);
+        \Auth::user()->tweet($body);
 
         return redirect()->back();
     }

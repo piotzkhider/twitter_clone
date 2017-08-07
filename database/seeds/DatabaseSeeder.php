@@ -52,11 +52,11 @@ class DatabaseSeeder extends Seeder
             'avatar' => FilePath::default(),
         ]);
 
-        $nishio = User::create([
-            'url_name' => 'nishio',
-            'email' => 'nishio@asia-quest.jp',
+        $inoue = User::create([
+            'url_name' => 'inoue',
+            'email' => 'eri.inoue@asia-quest.jp',
             'password' => bcrypt('password'),
-            'display_name' => 'kento',
+            'display_name' => 'eri',
             'avatar' => FilePath::default(),
         ]);
 
@@ -73,17 +73,17 @@ class DatabaseSeeder extends Seeder
         #region 人間関係作成
 
         $sato->follow($makino);
-        $sato->follow($nishio);
+        $sato->follow($inoue);
 
         $tsukinari->follow($kaneshima);
-        $tsukinari->follow($nishio);
+        $tsukinari->follow($inoue);
 
         $kaneshima->follow($sato);
         $kaneshima->follow($tsukinari);
         $kaneshima->follow($makino);
-        $kaneshima->follow($nishio);
+        $kaneshima->follow($inoue);
 
-        $nishio->follow($makino);
+        $inoue->follow($makino);
 
         #endregion
 
@@ -110,9 +110,9 @@ class DatabaseSeeder extends Seeder
 
         $kaneshima->tweet('設計書楽しいです');
 
-        $nishio->tweet('彼女できました');
+        $inoue->tweet('今日からインターンです');
         sleep(1);
-        $nishio->tweet('エイプリルフールです');
+        $inoue->tweet('緊張します');
 
         #endregion
     }

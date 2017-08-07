@@ -48,10 +48,27 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'url_name' => ['required', 'string', 'alpha_num', 'max:15', Rule::unique('users')],
+            'url_name' => [
+                'required',
+                'string',
+                'alpha_num',
+                'max:15',
+                Rule::unique('users'),
+                Rule::notIn($this->unavailableUrlNames()),
+            ],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
         ]);
+    }
+
+    /**
+     * ユーザー名として使用できない名前定義
+     *
+     * @return array
+     */
+    protected function unavailableUrlNames(): array
+    {
+        return ['home', 'search', 'settings', 'login', 'logout', 'register', 'password'];
     }
 
     /**

@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use App\Domain\Models\User\Avatar\Avatar;
+use App\Domain\Models\User\Avatar\FilePath;
+use App\Domain\Models\User\Avatar\Storage as AvatarStorage;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
 
 /**
@@ -17,7 +19,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string|null $display_name
  * @property string|null $description
- * @property \App\Domain\Models\User\Avatar\Avatar $avatar
+ * @property \App\Domain\Models\User\Avatar\FilePath $avatar
  * @property string|null $remember_token
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
@@ -98,16 +100,43 @@ class User extends Authenticatable
 
     #endregion
 
+    #region アクセサ/ミューテータ
+
     /**
      * アクセサ
      *
      * @param string $value
-     * @return \App\Domain\Models\User\Avatar\Avatar
+     * @return \App\Domain\Models\User\Avatar\FilePath
      */
-    public function getAvatarAttribute(string $value): Avatar
+    public function getAvatarAttribute(string $value): FilePath
     {
-        return Avatar::fromStoredPath($value);
+        $filePath = new FilePath($value);
+
+        return $filePath->publish();
     }
+
+    /**
+     * ミューテータ
+     *
+     * @param \Illuminate\Http\UploadedFile|null|string $value
+     */
+    public function setAvatarAttribute($value)
+    {
+        if (is_null($value)) {
+            return;
+        }
+
+        if ($value instanceof UploadedFile) {
+            $filePath = AvatarStorage::store($value);
+            $this->attributes['avatar'] = $filePath;
+
+            return;
+        }
+
+        $this->attributes['avatar'] = $value;
+    }
+
+    #endregion
 
     /**
      * フォローする

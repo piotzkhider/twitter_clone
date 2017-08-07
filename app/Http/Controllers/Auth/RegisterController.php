@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Domain\Models\User\Avatar\AvatarStorage;
+use App\Domain\Models\User\Avatar\FilePath;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'display_name' => $data['url_name'],
-            'avatar' => AvatarStorage::defaultAvatarPath(),
+            'avatar' => FilePath::default(),
         ]);
     }
 }

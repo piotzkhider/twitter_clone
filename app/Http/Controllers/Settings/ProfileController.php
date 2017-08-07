@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Domain\Models\User\Avatar\AvatarStorage;
+use App\Domain\Models\User\Avatar\Storage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\UpdateProfileRequest;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -24,12 +25,9 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        $name = $request->input('display_name');
-        $avatar = $request->file('avatar');
+        $attributes = $request->only('display_name', 'avatar');
 
-        $path = AvatarStorage::load()->store($avatar);
-
-        \Auth::user()->update(['display_name' => $name, 'avatar' => $path]);
+        \Auth::user()->update($attributes);
 
         return redirect()->back();
     }

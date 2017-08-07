@@ -47,6 +47,19 @@
                             @endif
                         </div>
                     </div>
+                    <div class="form-group row {{ $errors->has('description') ? ' has-danger' : '' }}">
+                        <label for="description" class="col-3 col-form-label">自己紹介</label>
+                        <div class="col-9">
+                            <input name="description" type="text" id="description" class="form-control"
+                                   value="{{ $me->description }}" maxlength="160">
+
+                            @if ($errors->has('description'))
+                                <div class="form-control-feedback">
+                                    <strong>{{ $errors->first('description') }}</strong>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <div class="offset-3 col-9">
                             <button type="submit" class="btn btn-success mt-4">保存する</button>

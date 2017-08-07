@@ -7,8 +7,7 @@
         <div class="media-body">
             <div class="mb-2">
                 <time class="float-right small text-muted">{{ $tweet->created_at }}</time>
-                <a class="font-weight-bold text-inherit d-block"
-                   href="{{ route('user', [$tweet->user->url_name]) }}">
+                <a class="text-inherit" href="{{ route('user', [$tweet->user->url_name]) }}">
                     <strong>{{ $tweet->user->display_name }}</strong>
                 </a>
             </div>

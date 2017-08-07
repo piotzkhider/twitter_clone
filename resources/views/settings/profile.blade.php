@@ -25,8 +25,8 @@
                         {{ method_field('PUT') }}
 
                         <div class="form-group row {{ $errors->has('display_name') ? ' has-danger' : '' }}">
-                            <label for="display_name" class="col-2 col-form-label">表示名</label>
-                            <div class="col-10">
+                            <label for="display_name" class="col-3 col-form-label">表示名</label>
+                            <div class="col-9">
                                 <input name="display_name" type="text" id="display_name" class="form-control"
                                        value="{{ $me->display_name }}">
 
@@ -38,8 +38,8 @@
                             </div>
                         </div>
                         <div class="form-group row {{ $errors->has('avatar') ? 'has-danger' : '' }}">
-                            <label for="avatar" class="col-2 col-form-label">アバター</label>
-                            <div class="col-10">
+                            <label for="avatar" class="col-3 col-form-label">アバター</label>
+                            <div class="col-9">
                                 <img src="{{ $me->avatar }}" class="avatar">
                                 <input name="avatar" type="file" id="avatar" class="form-control-file">
 
@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="offset-2 col-10">
+                            <div class="offset-3 col-9">
                                 <button type="submit" class="btn btn-success mt-4">Save</button>
                             </div>
                         </div>

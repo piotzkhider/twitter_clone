@@ -57,10 +57,6 @@
                                     <button type="submit" class="btn btn-primary">
                                         ログイン
                                     </button>
-
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        パスワードを忘れた時
-                                    </a>
                                 </div>
                             </div>
                         </form>

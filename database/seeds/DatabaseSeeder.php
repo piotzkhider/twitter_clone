@@ -90,17 +90,29 @@ class DatabaseSeeder extends Seeder
         #region つぶやき作成
 
         $sato->tweet('仕事楽しい');
+        sleep(1);
         $sato->tweet('なんてすばらしい会社なんだろう');
+        sleep(1);
         $sato->tweet('給料5倍ぐらいにならないかな');
+        sleep(1);
 
         $makino->tweet('早く帰りたい');
+        sleep(1);
         $makino->tweet('PHP最高です');
+        sleep(1);
         $makino->tweet('PHP以外考えられない');
+        sleep(1);
 
         $tsukinari->tweet('彼女がブーケ受け取りました');
+        sleep(1);
         $tsukinari->tweet('結婚します');
+        sleep(1);
 
         $kaneshima->tweet('設計書楽しいです');
+
+        $nishio->tweet('彼女できました');
+        sleep(1);
+        $nishio->tweet('エイプリルフールです');
 
         #endregion
     }

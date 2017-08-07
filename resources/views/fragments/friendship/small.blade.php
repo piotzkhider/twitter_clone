@@ -10,8 +10,10 @@
     <form action="{{ route('follow', [$user->url_name]) }}" method="POST">
         {{ csrf_field() }}
 
-        <button class="btn btn-outline-primary btn-sm">
-            <span class="icon icon-add-user"></span> Follow
-        </button>
+        @unless($me->equals($user))
+            <button class="btn btn-outline-primary btn-sm">
+                <span class="icon icon-add-user"></span> Follow
+            </button>
+        @endunless
     </form>
 @endif

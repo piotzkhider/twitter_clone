@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('home', 'HomeController@index')->name('home');
     Route::post('home', 'HomeController@post');
 
-    Route::post('search', 'Search')->name('search');
+    Route::get('search', 'Search')->name('search');
 
     Route::group(['namespace' => 'Settings', 'prefix' => 'settings'], function () {
         Route::get('account', 'AccountController@edit')->name('settings.account');

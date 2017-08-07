@@ -43,9 +43,7 @@
                 </li>
             </ul>
 
-            <form action="{{ route('search') }}" method="POST" class="form-inline float-right hidden-sm-down">
-                {{ csrf_field() }}
-
+            <form action="{{ route('search') }}" class="form-inline float-right hidden-sm-down">
                 <span {{ $errors->has('search') ? 'has-danger' : '' }}>
                     <input name="search" type="text" class="form-control form-search" placeholder="Search">
                 </span>

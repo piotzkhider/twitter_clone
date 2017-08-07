@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('search', 'Search')->name('search');
 
-    Route::group(['namespace' => 'Settings', 'prefix' => 'settings'], function () {
+    Route::prefix('settings')->namespace('Settings')->group(function () {
         Route::get('account', 'AccountController@edit')->name('settings.account');
         Route::put('account', 'AccountController@update');
         Route::get('profile', 'ProfileController@edit')->name('settings.profile');

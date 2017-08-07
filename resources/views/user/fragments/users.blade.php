@@ -5,7 +5,7 @@
                 <div class="card-header bg-danger"></div>
                 <div class="card-block">
                     <a href="{{ route('user', [$user->url_name]) }}">
-                        <img class="avatar card-profile-img" src="{{ $user->avatar }}">
+                        <img class="avatar card-profile-img" src="{{ asset($user->avatar) }}">
                     </a>
 
                     <span class="float-right">

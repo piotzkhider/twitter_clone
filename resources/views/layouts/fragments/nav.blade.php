@@ -55,7 +55,7 @@
                 <li class="nav-item nav-account dropdown">
                     <a class="nav-link" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
-                        <img class="rounded-circle" src="{{ $me->avatar }}">
+                        <img class="rounded-circle" src="{{ asset($me->avatar) }}">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                         <a class="dropdown-item" href="{{ route('settings.account') }}">

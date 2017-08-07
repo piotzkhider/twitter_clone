@@ -26,11 +26,7 @@ class FilePath
      */
     public function publish(): FilePath
     {
-        if ($this->isDefault()) {
-            return new static($this->value);
-        }
-
-        $filePath = sprintf('storage/avatars/%s', $this->filename());
+        $filePath = $this->isDefault() ? $this->value : sprintf('storage/avatars/%s', $this->filename());
 
         return new static($filePath);
     }
@@ -70,6 +66,6 @@ class FilePath
      */
     public function __toString()
     {
-        return asset($this->value);
+        return $this->value;
     }
 }

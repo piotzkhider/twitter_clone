@@ -2,7 +2,7 @@
     <article class="d-flex w-100">
         <a class="font-weight-bold text-inherit d-block"
            href="{{ route('user', [$tweet->user->url_name]) }}">
-            <img class="media-object d-flex align-self-start mr-3" src="{{ $tweet->user->avatar }}">
+            <img class="media-object d-flex align-self-start mr-3" src="{{ asset($tweet->user->avatar) }}">
         </a>
         <div class="media-body">
             <div class="mb-2">

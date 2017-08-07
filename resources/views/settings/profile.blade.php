@@ -40,7 +40,7 @@
                         <div class="form-group row {{ $errors->has('avatar') ? 'has-danger' : '' }}">
                             <label for="avatar" class="col-3 col-form-label">アバター</label>
                             <div class="col-9">
-                                <img src="{{ $me->avatar }}" class="avatar">
+                                <img src="{{ asset($me->avatar) }}" class="avatar">
                                 <input name="avatar" type="file" id="avatar" class="form-control-file">
 
                                 @if ($errors->has('avatar'))

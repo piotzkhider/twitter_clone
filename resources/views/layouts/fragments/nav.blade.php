@@ -17,14 +17,14 @@
             <ul class="navbar-nav mr-auto">
                 <li>
                     <a class="nav-link" href="{{ route('home') }}">
-                        <span class="icon icon-home"></span> Home
+                        <span class="icon icon-home"></span> ホーム
                     </a>
                 </li>
-                <li>
-                    <a class="nav-link" href="{{ route('user', [$me->url_name]) }}">
-                        <span class="icon icon-user"></span> Profile
-                    </a>
-                </li>
+                {{--<li>--}}
+                    {{--<a class="nav-link" href="{{ route('user', [$me->url_name]) }}">--}}
+                        {{--<span class="icon icon-user"></span> プロフィール--}}
+                    {{--</a>--}}
+                {{--</li>--}}
                 <li class="dropdown-divider"></li>
                 <li class="hidden-md-up">
                     <a class="nav-link" href="{{ route('settings.account') }}">

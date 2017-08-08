@@ -162,11 +162,11 @@ class User extends Authenticatable
     /**
      * フォローを外す
      *
-     * @param \App\Models\User $followee
+     * @param \App\Models\User $following
      */
-    public function unfollow(User $followee)
+    public function unfollow(User $following)
     {
-        $this->following()->detach($followee->id);
+        $this->following()->detach($following->id);
     }
 
     /**

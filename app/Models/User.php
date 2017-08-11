@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Domain\Models\User\Avatar\AvatarType;
-use App\Domain\Models\User\AvatarStorage as AvatarStorage;
+use App\Domain\Models\User\AvatarStorage;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;

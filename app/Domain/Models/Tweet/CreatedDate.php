@@ -78,13 +78,21 @@ class CreatedDate
     {
         if ($this->hasPassedOneYear()) {
             return $this->date->format('j M Y');
-        } elseif ($this->hasPassedOneDay()) {
+        }
+
+        if ($this->hasPassedOneDay()) {
             return $this->date->format('M j');
-        } elseif ($this->hasPassedOneHour()) {
+        }
+
+        if ($this->hasPassedOneHour()) {
             return sprintf('%sh', Carbon::now()->diffInHours($this->date));
-        } elseif ($this->hasPassedOneMinute()) {
+        }
+
+        if ($this->hasPassedOneMinute()) {
             return sprintf('%sm', Carbon::now()->diffInMinutes($this->date));
-        } elseif ($this->hasPassedOneSecond()) {
+        }
+
+        if ($this->hasPassedOneSecond()) {
             return sprintf('%ss', Carbon::now()->diffInSeconds($this->date));
         }
 

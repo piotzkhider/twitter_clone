@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class AvatarStorage
 {
     /**
+     * アバターを保存するディレクトリのパス
+     *
      * @var string
      */
     const PATH = 'public/avatars';

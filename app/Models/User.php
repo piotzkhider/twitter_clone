@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Domain\Models\User\Avatar\AvatarType;
-use App\Domain\Models\User\AvatarStorage;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -108,12 +106,16 @@ class User extends Authenticatable
     /**
      * アクセサ
      *
-     * @param string $value
+     * @param $value
      * @return string
      */
-    public function getAvatarAttribute(string $value): string
+    public function getAvatarAttribute($value): string
     {
-        return AvatarType::avatar($value)->url();
+        if ($value == 'images/no-thumb.png') {
+            return $value;
+        }
+
+        return \Storage::url($value);
     }
 
     /**
@@ -128,7 +130,7 @@ class User extends Authenticatable
         }
 
         if ($value instanceof UploadedFile) {
-            $stored = AvatarStorage::store($value);
+            $stored = $value->store('public/avatars');
             $this->attributes['avatar'] = $stored;
 
             return;
@@ -138,37 +140,6 @@ class User extends Authenticatable
     }
 
     #endregion
-
-    /**
-     * つぶやく
-     *
-     * @param string $body
-     * @return \Illuminate\Database\Eloquent\Model|\App\Models\Tweet
-     */
-    public function tweet(string $body)
-    {
-        return $this->tweets()->create(['body' => $body]);
-    }
-
-    /**
-     * フォローする
-     *
-     * @param \App\Models\User $followee
-     */
-    public function follow(User $followee)
-    {
-        $this->following()->attach($followee->id);
-    }
-
-    /**
-     * フォローを外す
-     *
-     * @param \App\Models\User $following
-     */
-    public function unfollow(User $following)
-    {
-        $this->following()->detach($following->id);
-    }
 
     /**
      * フォローしているかどうか

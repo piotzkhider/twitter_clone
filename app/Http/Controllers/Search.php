@@ -2,21 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Models\Search\Conditions;
-use App\Http\Requests\SearchRequest;
 use App\Models\Tweet;
+use Illuminate\Http\Request;
 
 class Search extends Controller
 {
     /**
-     * @param \App\Http\Requests\SearchRequest $request
+     * @param \Illuminate\Http\Request $request
      * @return mixed
      */
-    public function __invoke(SearchRequest $request)
+    public function __invoke(Request $request)
     {
-        $conditions = new Conditions($request->input('search'));
-        $timeline = Tweet::timeline()->search($conditions)->get();
+        $this->validate($request, [
+            'search' => ['required', 'string'],
+        ]);
 
-        return view('search')->with(compact('conditions', 'timeline'));
+        $conditions = explode(' ', $request->input('search'));
+
+        $query = Tweet::latest();
+        foreach ($conditions as $condition) {
+            $query->where('body', 'like', '%'.$condition.'%');
+        }
+        $timeline = $query->get();
+
+        return view('search', ['conditions' => $conditions, 'timeline' => $timeline]);
     }
 }

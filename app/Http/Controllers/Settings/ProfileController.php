@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\UpdateProfileRequest;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -14,19 +14,25 @@ class ProfileController extends Controller
     {
         $me = \Auth::user();
 
-        return view('settings.profile')->with(compact('me'));
+        return view('settings.profile', ['me' => $me]);
     }
 
     /**
-     * @param \App\Http\Requests\Settings\UpdateProfileRequest $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(Request $request)
     {
+        $this->validate($request, [
+            'display_name' => ['string', 'nullable', 'max:20'],
+            'avatar' => ['image', 'nullable'],
+            'description' => ['string', 'nullable', 'max:160'],
+        ]);
+
         $attributes = $request->only('display_name', 'avatar', 'description');
 
         \Auth::user()->update($attributes);
 
-        return redirect()->back();
+        return back();
     }
 }

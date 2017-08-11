@@ -2,7 +2,6 @@
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use App\Domain\Models\User\Avatar\FilePath;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,8 +21,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'sato@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Yoshihiro',
-            'description' => '勉強するデブ',
-            'avatar' => FilePath::default(),
+            'description' => 'PHPはいいよ',
+            'avatar' => 'images/no-thumb.png',
         ]);
 
         $makino = User::create([
@@ -31,8 +30,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'makino@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Shinichi',
-            'description' => '勉強するヒョロガリ',
-            'avatar' => FilePath::default(),
+            'description' => 'Javaはいいよ',
+            'avatar' => 'images/no-thumb.png',
         ]);
 
         $tsukinari = User::create([
@@ -41,15 +40,15 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'display_name' => 'Kenta',
             'description' => '結婚したいです',
-            'avatar' => FilePath::default(),
+            'avatar' => 'images/no-thumb.png',
         ]);
 
-        $kaneshima = User::create([
-            'url_name' => 'kaneshima',
-            'email' => '	yushi.kaneshima@example.co.jp',
+        $nagai = User::create([
+            'url_name' => 'nagai',
+            'email' => '	hayato.nagai@example.co.jp',
             'password' => bcrypt('password'),
-            'display_name' => 'Yushi',
-            'avatar' => FilePath::default(),
+            'display_name' => 'Hayato',
+            'avatar' => 'images/no-thumb.png',
         ]);
 
         $inoue = User::create([
@@ -57,62 +56,62 @@ class DatabaseSeeder extends Seeder
             'email' => 'eri.inoue@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Eri',
-            'avatar' => FilePath::default(),
+            'avatar' => 'images/no-thumb.png',
         ]);
 
-        $imai = User::create([
-            'url_name' => 'imai',
-            'email' => 'imai@example.co.jp',
+        $iwasaki = User::create([
+            'url_name' => 'iwasaki',
+            'email' => 'iwasaki@example.co.jp',
             'password' => bcrypt('password'),
-            'display_name' => 'Hiroki',
-            'avatar' => FilePath::default(),
+            'display_name' => 'Yuuki',
+            'avatar' => 'images/no-thumb.png',
         ]);
 
         #endregion
 
         #region 人間関係作成
 
-        $sato->follow($makino);
-        $sato->follow($inoue);
+        $sato->following()->attach($makino->id);
+        $sato->following()->attach($inoue->id);
 
-        $tsukinari->follow($kaneshima);
-        $tsukinari->follow($inoue);
+        $tsukinari->following()->attach($nagai->id);
+        $tsukinari->following()->attach($inoue->id);
 
-        $kaneshima->follow($sato);
-        $kaneshima->follow($tsukinari);
-        $kaneshima->follow($makino);
-        $kaneshima->follow($inoue);
+        $nagai->following()->attach($sato->id);
+        $nagai->following()->attach($tsukinari->id);
+        $nagai->following()->attach($makino->id);
+        $nagai->following()->attach($inoue->id);
 
-        $inoue->follow($makino);
+        $inoue->following()->attach($makino->id);
 
         #endregion
 
         #region つぶやき作成
 
-        $sato->tweet('仕事楽しい');
+        $sato->tweets()->create(['body' => '仕事楽しい']);
         sleep(1);
-        $sato->tweet('なんてすばらしい会社なんだろう');
+        $sato->tweets()->create(['body' => 'なんてすばらしい会社なんだろう']);
         sleep(1);
-        $sato->tweet('給料5倍ぐらいにならないかな');
-        sleep(1);
-
-        $makino->tweet('早く帰りたい');
-        sleep(1);
-        $makino->tweet('PHP最高です');
-        sleep(1);
-        $makino->tweet('PHP以外考えられない');
+        $sato->tweets()->create(['body' => '給料5倍ぐらいにならないかな']);
         sleep(1);
 
-        $tsukinari->tweet('彼女がブーケ受け取りました');
+        $makino->tweets()->create(['body' => 'そろそろインターンだ']);
         sleep(1);
-        $tsukinari->tweet('結婚します');
+        $makino->tweets()->create(['body' => 'PHP最高です']);
+        sleep(1);
+        $makino->tweets()->create(['body' => 'PHP以外考えられない']);
         sleep(1);
 
-        $kaneshima->tweet('設計書楽しいです');
-
-        $inoue->tweet('今日からインターンです');
+        $tsukinari->tweets()->create(['body' => '彼女がブーケ受け取りました']);
         sleep(1);
-        $inoue->tweet('緊張します');
+        $tsukinari->tweets()->create(['body' => '結婚します']);
+        sleep(1);
+
+        $nagai->tweets()->create(['body' => '設計書楽しいです']);
+
+        $inoue->tweets()->create(['body' => '今日からインターンです']);
+        sleep(1);
+        $inoue->tweets()->create(['body' => '緊張します']);
 
         #endregion
     }

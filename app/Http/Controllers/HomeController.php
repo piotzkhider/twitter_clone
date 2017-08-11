@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
 use App\Models\Tweet;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -14,21 +14,26 @@ class HomeController extends Controller
     {
         $me = \Auth::user();
 
-        $timeline = Tweet::timeline()->forHome()->get();
+        $timeline = Tweet::whereUserId($me->id)
+            ->orWhereIn('user_id', $me->following->pluck('id'))
+            ->latest()
+            ->get();
 
-        return view('home')->with(compact('me', 'timeline'));
+        return view('home', ['me' => $me, 'timeline' => $timeline]);
     }
 
     /**
-     * @param \App\Http\Requests\PostRequest $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function post(PostRequest $request)
+    public function post(Request $request)
     {
-        $body = $request->input('body');
+        $this->validate($request, [
+            'body' => ['required', 'string', 'max:140'],
+        ]);
 
-        \Auth::user()->tweet($body);
+        \Auth::user()->tweets()->create($request->only('body'));
 
-        return redirect()->back();
+        return back();
     }
 }

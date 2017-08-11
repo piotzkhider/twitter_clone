@@ -7,7 +7,7 @@
                 <div class="card card-link-list mb-4">
                     <div class="card-block">
                         <h6 class="card-title">Search</h6>
-                        {{ $conditions }}
+                        {{ implode(', ', $conditions) }}
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
                     @empty
                         <li class="media list-group-item p-4">
                             <article class="d-flex w-100">
-                                {{ $conditions }}　の検索結果はありません
+                                {{ implode(', ', $conditions) }}　の検索結果はありません
                             </article>
                         </li>
                     @endforelse

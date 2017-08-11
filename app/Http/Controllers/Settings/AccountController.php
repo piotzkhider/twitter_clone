@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\UpdateAccountRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AccountController extends Controller
 {
@@ -14,19 +15,25 @@ class AccountController extends Controller
     {
         $me = \Auth::user();
 
-        return view('settings.account')->with(compact('me'));
+        return view('settings.account', ['me' => $me]);
     }
 
     /**
-     * @param \App\Http\Requests\Settings\UpdateAccountRequest $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateAccountRequest $request)
+    public function update(Request $request)
     {
+        $this->validate($request, [
+            'url_name' => ['required', 'string', 'alpha_num',  'max:15', Rule::unique('users')->ignore(\Auth::id())],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(\Auth::id())],
+            'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
+        ]);
+
         $attributes = $request->only('url_name', 'email', 'password');
 
         \Auth::user()->update($attributes);
 
-        return redirect()->back();
+        return back();
     }
 }

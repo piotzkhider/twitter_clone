@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Domain\Models\User\Avatar\DefaultAvatar;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -54,21 +53,10 @@ class RegisterController extends Controller
                 'alpha_num',
                 'max:15',
                 Rule::unique('users'),
-                Rule::notIn($this->unavailableUrlNames()),
             ],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => ['required', 'string', 'alpha_num', 'min:8', 'confirmed'],
         ]);
-    }
-
-    /**
-     * ユーザー名として使用できない名前定義
-     *
-     * @return array
-     */
-    protected function unavailableUrlNames(): array
-    {
-        return ['home', 'search', 'settings', 'login', 'logout', 'register', 'password'];
     }
 
     /**
@@ -84,7 +72,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'display_name' => $data['url_name'],
-            'avatar' => new DefaultAvatar(),
+            'avatar' => 'images/no-thumb.png',
         ]);
     }
 }

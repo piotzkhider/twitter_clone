@@ -8,13 +8,15 @@ use App\Models\User;
 class Unfollow extends Controller
 {
     /**
-     * @param \App\Models\User $user
+     * @param $urlName
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(User $user)
+    public function __invoke($urlName)
     {
-        \Auth::user()->unfollow($user);
+        $user = User::whereUrlName($urlName)->first();
 
-        return redirect()->back();
+        \Auth::user()->following()->detach($user->id);
+
+        return back();
     }
 }

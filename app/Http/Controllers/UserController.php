@@ -8,37 +8,43 @@ use App\Models\User;
 class UserController extends Controller
 {
     /**
-     * @param \App\Models\User $user
+     * @param $urlName
      * @return mixed
      */
-    public function index(User $user)
+    public function index($urlName)
     {
+        $user = User::whereUrlName($urlName)->first();
+
         $me = \Auth::user();
 
-        $timeline = Tweet::timeline()->ofUser($user)->get();
+        $timeline = Tweet::whereUserId($user->id)->latest()->get();
 
-        return view('user.index')->with(compact('me', 'user', 'timeline'));
+        return view('user.index', ['me' => $me, 'user' => $user, 'timeline' => $timeline]);
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param $urlName
      * @return mixed
      */
-    public function following(User $user)
+    public function following($urlName)
     {
+        $user = User::whereUrlName($urlName)->first();
+
         $me = \Auth::user();
 
-        return view('user.following')->with(compact('me', 'user'));
+        return view('user.following', ['me' => $me, 'user' => $user]);
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param $urlName
      * @return mixed
      */
-    public function followers(User $user)
+    public function followers($urlName)
     {
+        $user = User::whereUrlName($urlName)->first();
+
         $me = \Auth::user();
 
-        return view('user.followers')->with(compact('me', 'user'));
+        return view('user.followers', ['me' => $me, 'user' => $user]);
     }
 }

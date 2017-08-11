@@ -8,13 +8,15 @@ use App\Models\User;
 class Follow extends Controller
 {
     /**
-     * @param \App\Models\User $user
+     * @param $urlName
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(User $user)
+    public function __invoke($urlName)
     {
-        \Auth::user()->follow($user);
+        $user = User::whereUrlName($urlName)->first();
 
-        return redirect()->back();
+        \Auth::user()->following()->attach($user->id);
+
+        return back();
     }
 }

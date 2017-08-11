@@ -13,50 +13,54 @@
                         <form method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
 
-                            <div class="form-group row {{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-4 col-form-label text-right">名前</label>
+                            <div class="form-group row {{ $errors->has('url_name') ? ' has-danger' : '' }}">
+                                <label for="url_name" class="col-4 col-form-label text-right">ユーザ名</label>
                                 <div class="col-6">
-                                    <input name="name" id="name" type="text" class="form-control"
-                                           value="{{ old('name') }}" required autofocus>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="sizing-addon2">&#64;</span>
+                                        <input name="url_name" type="text" id="url_name"
+                                               class="form-control form-control-danger"
+                                               value="{{ old('url_name') }}" required autofocus>
+                                    </div>
 
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                    @if ($errors->has('url_name'))
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('url_name') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <label for="email" class="col-4 col-form-label text-right">メールアドレス</label>
                                 <div class="col-6">
-                                    <input name="email" id="email" type="email" class="form-control"
-                                           value="{{ old('email') }}" required autofocus>
+                                    <input name="email" id="email" type="email" class="form-control form-control-danger"
+                                           value="{{ old('email') }}" required>
 
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group row {{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="form-group row {{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <label for="password" class="col-4 col-form-label text-right">パスワード</label>
                                 <div class="col-6">
-                                    <input name="password" id="password" type="password" class="form-control" required>
+                                    <input name="password" id="password" type="password"
+                                           class="form-control form-control-danger" required>
 
                                     @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                        <div class="form-control-feedback">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-4 col-form-label text-right">Confirm
-                                    パスワード</label>
+                                <label for="password-confirm" class="col-4 col-form-label text-right">パスワード(確認)</label>
                                 <div class="col-6">
                                     <input name="password_confirmation" id="password-confirm" type="password"
                                            class="form-control" required>

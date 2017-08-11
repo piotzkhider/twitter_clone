@@ -2,40 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
-     * 新しいコントローラインスタンスの生成
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function index()
     {
-        return view('home');
+        $me = \Auth::user();
+
+        $timeline = Tweet::whereUserId($me->id)
+            ->orWhereIn('user_id', $me->following->pluck('id'))
+            ->latest()
+            ->get();
+
+        return view('home', ['me' => $me, 'timeline' => $timeline]);
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function profile()
+    public function post(Request $request)
     {
-        return view('profile.profile');
-    }
+        $this->validate($request, [
+            'body' => ['required', 'string', 'max:140'],
+        ]);
 
-    public function friends()
-    {
-        return view('profile.friends');
+        \Auth::user()->tweets()->create($request->only('body'));
+
+        return back();
     }
 }

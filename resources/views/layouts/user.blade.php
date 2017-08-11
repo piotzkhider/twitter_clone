@@ -22,6 +22,8 @@
 
 @include('layouts.fragments.nav')
 
+@include('layouts.fragments.header')
+
 <div class="container pt-4">
     <div class="row">
         @yield('content')
@@ -41,7 +43,7 @@
 
 <script>
     $(function () {
-        $('a[href="' + location.href + '"]').addClass('active');
+        $('nav#profile-header a[href="' + location.href + '"]').parent().addClass('active');
     });
 </script>
 

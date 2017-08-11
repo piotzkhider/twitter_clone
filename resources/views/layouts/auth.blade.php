@@ -40,7 +40,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="active">
                     <a class="nav-link" href="{{ route('login') }}">
-                        <span class="icon icon-login"></span> Login
+                        <span class="icon icon-login"></span> ログイン
                     </a>
                 </li>
                 <li>

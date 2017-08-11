@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -167,6 +167,7 @@ return [
          * パッケージのサービスプロバイダ
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        Piotzkhider\NonUnicodeValidation\ValidationServiceProvider::class,
 
         /*
          * アプリケーションサービスプロバイダ

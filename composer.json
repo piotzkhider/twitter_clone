@@ -9,6 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
+        "marc-mabe/php-enum": "^2.3",
         "piotzkhider/nonunicode-validation": "^5.4"
     },
     "require-dev": {

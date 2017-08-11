@@ -1,7 +1,7 @@
 <div class="card card-profile mb-4">
     <div class="card-header bg-danger"></div>
     <div class="card-block text-center">
-        <a href="#">
+        <a href="{{ route('settings.profile') }}">
             <img class="avatar card-profile-img" src="{{ asset($me->avatar) }}">
         </a>
 

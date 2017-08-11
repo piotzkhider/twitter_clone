@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Domain\Models\User\Avatar\FilePath;
-use App\Domain\Models\User\Avatar\Storage as AvatarStorage;
+use App\Domain\Models\User\Avatar\AvatarType;
+use App\Domain\Models\User\AvatarStorage as AvatarStorage;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,16 +19,18 @@ use Illuminate\Notifications\Notifiable;
  * @property string $password
  * @property string|null $display_name
  * @property string|null $description
- * @property \App\Domain\Models\User\Avatar\FilePath $avatar
+ * @property string $avatar
  * @property string|null $remember_token
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $followers
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $following
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tweet[] $tweets
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereDisplayName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
@@ -107,13 +109,11 @@ class User extends Authenticatable
      * アクセサ
      *
      * @param string $value
-     * @return \App\Domain\Models\User\Avatar\FilePath
+     * @return string
      */
-    public function getAvatarAttribute(string $value): FilePath
+    public function getAvatarAttribute(string $value): string
     {
-        $filePath = new FilePath($value);
-
-        return $filePath->publish();
+        return AvatarType::avatar($value)->url();
     }
 
     /**
@@ -128,8 +128,8 @@ class User extends Authenticatable
         }
 
         if ($value instanceof UploadedFile) {
-            $filePath = AvatarStorage::store($value);
-            $this->attributes['avatar'] = $filePath;
+            $stored = AvatarStorage::store($value);
+            $this->attributes['avatar'] = $stored;
 
             return;
         }

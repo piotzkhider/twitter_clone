@@ -7,7 +7,7 @@ Install the package through [Composer](http://getcomposer.org).
 On the command line:
 
 ```
-composer require piotzkhider/twitter_clone
+git clone https://github.com/piotzkhider/twitter_clone.git
 ```
 
 ```

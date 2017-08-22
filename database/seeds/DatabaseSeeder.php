@@ -2,7 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use App\Domain\Models\User\Avatar\FilePath;
+use App\Domain\Models\User\Avatar\DefaultAvatar;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'display_name' => 'Yoshihiro',
             'description' => '勉強するデブ',
-            'avatar' => FilePath::default(),
+            'avatar' => new DefaultAvatar(),
         ]);
 
         $makino = User::create([
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'display_name' => 'Shinichi',
             'description' => '勉強するヒョロガリ',
-            'avatar' => FilePath::default(),
+            'avatar' => new DefaultAvatar(),
         ]);
 
         $tsukinari = User::create([
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'display_name' => 'Kenta',
             'description' => '結婚したいです',
-            'avatar' => FilePath::default(),
+            'avatar' => new DefaultAvatar(),
         ]);
 
         $kaneshima = User::create([
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'email' => '	yushi.kaneshima@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Yushi',
-            'avatar' => FilePath::default(),
+            'avatar' => new DefaultAvatar(),
         ]);
 
         $inoue = User::create([
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'eri.inoue@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Eri',
-            'avatar' => FilePath::default(),
+            'avatar' => new DefaultAvatar(),
         ]);
 
         $imai = User::create([
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'imai@example.co.jp',
             'password' => bcrypt('password'),
             'display_name' => 'Hiroki',
-            'avatar' => FilePath::default(),
+            'avatar' => new DefaultAvatar(),
         ]);
 
         #endregion

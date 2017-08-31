@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Models\User;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * ルートモデル結合、パターンフィルターなどを定義
+     * ルートモデル結合、パターンフィルターなどを定義.
      *
      * @return void
      */
@@ -34,7 +34,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * アプリケーションのルートを定義
+     * アプリケーションのルートを定義.
      *
      * @return void
      */
@@ -47,7 +47,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * アプリケーションの"Web"ルート定義
+     * アプリケーションの"Web"ルート定義.
      *
      * これらのルートではすべて、セッション状態、CSRF保護などを受ける
      *
@@ -59,7 +59,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * アプリケーションの"api"ルート定義
+     * アプリケーションの"api"ルート定義.
      *
      * 通常、これらのルートはステートレス
      *

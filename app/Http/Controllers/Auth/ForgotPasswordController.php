@@ -21,7 +21,7 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     /**
-     * 新しいコントローラインスタンスの生成
+     * 新しいコントローラインスタンスの生成.
      *
      * @return void
      */

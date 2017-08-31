@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Broadcast;
 class BroadcastServiceProvider extends ServiceProvider
 {
     /**
-     * アプリケーションサービスの初期化処理
+     * アプリケーションサービスの初期化処理.
      *
      * @return void
      */

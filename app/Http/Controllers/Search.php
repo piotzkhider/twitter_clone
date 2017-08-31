@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Models\Search\Conditions;
-use App\Http\Requests\SearchRequest;
 use App\Models\Tweet;
+use App\Http\Requests\SearchRequest;
+use App\Domain\Models\Search\Conditions;
 
 class Search extends Controller
 {

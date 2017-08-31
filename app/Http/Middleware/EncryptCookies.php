@@ -7,7 +7,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 class EncryptCookies extends BaseEncrypter
 {
     /**
-     * 暗号化しないクッキーの名前
+     * 暗号化しないクッキーの名前.
      *
      * @var array
      */

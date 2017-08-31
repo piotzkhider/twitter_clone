@@ -7,7 +7,7 @@ use App\Domain\Models\User\Avatar\DefaultAvatar;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * データベース初期値設定実行
+     * データベース初期値設定実行.
      *
      * @return void
      */
@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-        #region キャラクター作成
+        //region キャラクター作成
 
         $sato = User::create([
             'url_name' => 'sato',
@@ -68,9 +68,9 @@ class DatabaseSeeder extends Seeder
             'avatar' => new DefaultAvatar(),
         ]);
 
-        #endregion
+        //endregion
 
-        #region 人間関係作成
+        //region 人間関係作成
 
         $sato->follow($makino);
         $sato->follow($inoue);
@@ -85,9 +85,9 @@ class DatabaseSeeder extends Seeder
 
         $inoue->follow($makino);
 
-        #endregion
+        //endregion
 
-        #region つぶやき作成
+        //region つぶやき作成
 
         $sato->tweet('仕事楽しい');
         sleep(1);
@@ -114,6 +114,6 @@ class DatabaseSeeder extends Seeder
         sleep(1);
         $inoue->tweet('緊張します');
 
-        #endregion
+        //endregion
     }
 }

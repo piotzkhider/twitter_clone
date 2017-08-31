@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     /**
-     * アプリケーションのグローバルHTTPミドルウェアスタック
+     * アプリケーションのグローバルHTTPミドルウェアスタック.
      *
      * これらのミドルウェアはアプリケーションにリクエストが届くごとに実行される
      *
@@ -21,7 +21,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
-     * アプリケーションのルートミドルウェアグループ
+     * アプリケーションのルートミドルウェアグループ.
      *
      * @var array
      */
@@ -43,7 +43,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
-     * アプリケーションのルートミドルウェアスタック
+     * アプリケーションのルートミドルウェアスタック.
      *
      * これらのミドルウェアは個別、もしくはグループに指定される
      *

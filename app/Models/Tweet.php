@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use App\Domain\Models\Search\Conditions;
 use App\Domain\Models\Tweet\CreatedDate;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * App\Models\Tweet
+ * App\Models\Tweet.
  *
  * @property int $id
  * @property int $user_id
@@ -33,14 +33,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Tweet extends Model
 {
     /**
-     * 複数代入を行う属性
+     * 複数代入を行う属性.
      *
      * @var array
      */
     protected $fillable = ['body'];
 
     /**
-     * リレーション
+     * リレーション.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -50,7 +50,7 @@ class Tweet extends Model
     }
 
     /**
-     * アクセサ
+     * アクセサ.
      *
      * @param $value
      * @return \App\Domain\Models\Tweet\CreatedDate
@@ -62,10 +62,10 @@ class Tweet extends Model
         return new CreatedDate($parsed);
     }
 
-    #region スコープ
+    //region スコープ
 
     /**
-     * 時系列降順に並び替える
+     * 時系列降順に並び替える.
      *
      * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return \Illuminate\Database\Eloquent\Builder
@@ -115,7 +115,7 @@ class Tweet extends Model
     }
 
     /**
-     * 本文を検索する
+     * 本文を検索する.
      *
      * @param \Illuminate\Database\Eloquent\Builder $builder
      * @param \App\Domain\Models\Search\Conditions $conditions
@@ -130,5 +130,5 @@ class Tweet extends Model
         });
     }
 
-    #endregion
+    //endregion
 }

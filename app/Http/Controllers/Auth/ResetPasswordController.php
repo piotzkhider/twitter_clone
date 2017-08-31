@@ -21,14 +21,14 @@ class ResetPasswordController extends Controller
     use ResetsPasswords;
 
     /**
-     * パスワードをリセットした後のユーザリダイレクト先
+     * パスワードをリセットした後のユーザリダイレクト先.
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * 新しいコントローラインスタンスの生成
+     * 新しいコントローラインスタンスの生成.
      *
      * @return void
      */

@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Domain\Models\User\Avatar\AvatarType;
-use App\Domain\Models\User\AvatarStorage;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Notifications\Notifiable;
+use App\Domain\Models\User\AvatarStorage;
+use App\Domain\Models\User\Avatar\AvatarType;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * App\Models\User
+ * App\Models\User.
  *
  * @property int $id
  * @property string $url_name
@@ -46,7 +46,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * 複数代入を行う属性
+     * 複数代入を行う属性.
      *
      * @var array
      */
@@ -60,7 +60,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * 配列には含めない属性
+     * 配列には含めない属性.
      *
      * @var array
      */
@@ -69,10 +69,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    #region リレーション
+    //region リレーション
 
     /**
-     * リレーション
+     * リレーション.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -82,31 +82,31 @@ class User extends Authenticatable
     }
 
     /**
-     * リレーション
+     * リレーション.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function following(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'friendships', 'follower_id', 'followee_id')->withTimestamps();
+        return $this->belongsToMany(self::class, 'friendships', 'follower_id', 'followee_id')->withTimestamps();
     }
 
     /**
-     * リレーション
+     * リレーション.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function followers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'friendships', 'followee_id', 'follower_id')->withTimestamps();
+        return $this->belongsToMany(self::class, 'friendships', 'followee_id', 'follower_id')->withTimestamps();
     }
 
-    #endregion
+    //endregion
 
-    #region アクセサ/ミューテータ
+    //region アクセサ/ミューテータ
 
     /**
-     * アクセサ
+     * アクセサ.
      *
      * @param string $value
      * @return string
@@ -137,10 +137,10 @@ class User extends Authenticatable
         $this->attributes['avatar'] = $value;
     }
 
-    #endregion
+    //endregion
 
     /**
-     * つぶやく
+     * つぶやく.
      *
      * @param string $body
      * @return \Illuminate\Database\Eloquent\Model|\App\Models\Tweet
@@ -151,7 +151,7 @@ class User extends Authenticatable
     }
 
     /**
-     * フォローする
+     * フォローする.
      *
      * @param \App\Models\User $followee
      */
@@ -161,7 +161,7 @@ class User extends Authenticatable
     }
 
     /**
-     * フォローを外す
+     * フォローを外す.
      *
      * @param \App\Models\User $following
      */
@@ -171,7 +171,7 @@ class User extends Authenticatable
     }
 
     /**
-     * フォローしているかどうか
+     * フォローしているかどうか.
      *
      * @param \App\Models\User $user
      * @return bool
@@ -182,7 +182,7 @@ class User extends Authenticatable
     }
 
     /**
-     * 同じユーザーかどうか
+     * 同じユーザーかどうか.
      *
      * @param \App\Models\User $user
      * @return bool

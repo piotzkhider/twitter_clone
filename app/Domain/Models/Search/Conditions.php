@@ -20,7 +20,7 @@ class Conditions
     }
 
     /**
-     * 分割する
+     * 分割する.
      *
      * @return array
      */
@@ -30,7 +30,7 @@ class Conditions
     }
 
     /**
-     * 半角スペースと全角スペース
+     * 半角スペースと全角スペース.
      *
      * @return string
      */

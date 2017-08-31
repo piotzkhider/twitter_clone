@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * アプリケーションサービスの初期化処理
+     * アプリケーションサービスの初期化処理.
      *
      * @return void
      */
@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * アプリケーションサービスの登録
+     * アプリケーションサービスの登録.
      *
      * @return void
      */

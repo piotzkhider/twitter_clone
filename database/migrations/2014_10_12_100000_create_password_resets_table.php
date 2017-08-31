@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreatePasswordResetsTable extends Migration
 {
     /**
-     * マイグレーション実行
+     * マイグレーション実行.
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class CreatePasswordResetsTable extends Migration
     }
 
     /**
-     * マイグレーションを戻す
+     * マイグレーションを戻す.
      *
      * @return void
      */

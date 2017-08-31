@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Friendship;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Http\Controllers\Controller;
 
 class Follow extends Controller
 {

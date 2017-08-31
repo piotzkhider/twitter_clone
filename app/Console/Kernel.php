@@ -8,7 +8,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
-     * アプリケーションで提供するArtisanコマンド
+     * アプリケーションで提供するArtisanコマンド.
      *
      * @var array
      */
@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     ];
 
     /**
-     * アプリケーションのコマンド実行スケジュール定義
+     * アプリケーションのコマンド実行スケジュール定義.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * アプリケーションのクロージャベースコマンドの登録
+     * アプリケーションのクロージャベースコマンドの登録.
      *
      * @return void
      */

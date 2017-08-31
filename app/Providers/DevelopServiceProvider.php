@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class DevelopServiceProvider extends ServiceProvider
 {
     /**
-     * 本番ではインストールしないものであるため、「::class」ではなく文字列で定義
+     * 本番ではインストールしないものであるため、「::class」ではなく文字列で定義.
      *
      * @var array
      */
@@ -17,9 +17,8 @@ class DevelopServiceProvider extends ServiceProvider
         'Barryvdh\Debugbar\ServiceProvider',
     ];
 
-
     /**
-     * localでのみ設定したいクラスエイリアス
+     * localでのみ設定したいクラスエイリアス.
      *
      * @var array
      */
@@ -36,7 +35,7 @@ class DevelopServiceProvider extends ServiceProvider
     {
         if ($this->isLocalOrTesting()) {
             \DB::listen(function ($query) {
-                \Log::debug('EXECUTE SQL:[' . $query->sql . ']', ['BINDINGS' => json_encode($query->bindings)]);
+                \Log::debug('EXECUTE SQL:['.$query->sql.']', ['BINDINGS' => json_encode($query->bindings)]);
                 \Log::debug('###################################');
             });
         }
@@ -56,7 +55,7 @@ class DevelopServiceProvider extends ServiceProvider
     }
 
     /**
-     * 開発時のみ使用するサービスプロバイダの登録
+     * 開発時のみ使用するサービスプロバイダの登録.
      */
     protected function registerServiceProvider()
     {
@@ -66,7 +65,7 @@ class DevelopServiceProvider extends ServiceProvider
     }
 
     /**
-     * クラスエイリアスの登録
+     * クラスエイリアスの登録.
      */
     protected function registerAliases()
     {

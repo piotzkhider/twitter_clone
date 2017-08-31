@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -22,14 +22,14 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * ログイン後のユーザリダイレクト先
+     * ログイン後のユーザリダイレクト先.
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * 新しいコントローラインスタンスの生成
+     * 新しいコントローラインスタンスの生成.
      *
      * @return void
      */

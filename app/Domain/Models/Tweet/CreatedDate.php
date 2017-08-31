@@ -22,7 +22,7 @@ class CreatedDate
     }
 
     /**
-     * 1年経過したかどうか
+     * 1年経過したかどうか.
      *
      * @return bool
      */
@@ -32,7 +32,7 @@ class CreatedDate
     }
 
     /**
-     * 1日経過したかどうか
+     * 1日経過したかどうか.
      *
      * @return bool
      */
@@ -42,7 +42,7 @@ class CreatedDate
     }
 
     /**
-     * 1時間経過したかどうか
+     * 1時間経過したかどうか.
      *
      * @return bool
      */
@@ -52,7 +52,7 @@ class CreatedDate
     }
 
     /**
-     * 1分経過したかどうか
+     * 1分経過したかどうか.
      *
      * @return bool
      */
@@ -62,7 +62,7 @@ class CreatedDate
     }
 
     /**
-     * 1秒経過したかどうか
+     * 1秒経過したかどうか.
      *
      * @return bool
      */

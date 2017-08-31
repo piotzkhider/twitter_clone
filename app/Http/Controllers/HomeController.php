@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
 use App\Models\Tweet;
+use App\Http\Requests\PostRequest;
 
 class HomeController extends Controller
 {

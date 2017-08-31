@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Domain\Models\User\Avatar\DefaultAvatar;
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Domain\Models\User\Avatar\DefaultAvatar;
 
 class RegisterController extends Controller
 {
@@ -25,7 +25,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * 登録後のユーザリダイレクト先
+     * 登録後のユーザリダイレクト先.
      *
      * @var string
      */
@@ -40,7 +40,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * 送られてきたユーザ登録リクエストのバリデター取得
+     * 送られてきたユーザ登録リクエストのバリデター取得.
      *
      * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -62,7 +62,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * ユーザー名として使用できない名前定義
+     * ユーザー名として使用できない名前定義.
      *
      * @return array
      */
@@ -72,7 +72,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * ユーザ登録成功後の新しいユーザインスタンス取得
+     * ユーザ登録成功後の新しいユーザインスタンス取得.
      *
      * @param  array $data
      * @return \App\Models\User

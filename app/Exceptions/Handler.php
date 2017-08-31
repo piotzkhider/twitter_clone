@@ -9,7 +9,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 class Handler extends ExceptionHandler
 {
     /**
-     * レポートしない例外タイプのリスト
+     * レポートしない例外タイプのリスト.
      *
      * @var array
      */
@@ -23,7 +23,7 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * 例外をレポート、もしくはログ
+     * 例外をレポート、もしくはログ.
      *
      * ここはSentryやBugsnagなどに例外を送るために良い場所
      *
@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * 認証例外を認証失敗レスポンスへ変換
+     * 認証例外を認証失敗レスポンスへ変換.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Illuminate\Auth\AuthenticationException  $exception
